@@ -2,23 +2,27 @@ $contrast-level: 200%;
 
 .bg {
     background-color: rgba(0, 0, 0, 0.494);
+    backdrop-filter: saturate(180%) blur(20px);
 }
 .header {
+    z-index: 10;
     position: fixed;
     top: 0;
     width: 100%;
     font-weight: 300;
+
 }
 .container {
     display: flex;
     justify-content: center;
 }
 ul {
+    
     color: rgb(179,179,179);
     list-style-type: none;
     display: flex;
     align-items: center;
-    font-size: 17px;
+    font-size: 15px;
     gap: 25px;
     max-height: 30px;
     padding-left: 0;
