@@ -1,0 +1,42 @@
+.bg {
+    background-color: #F5F5F7;
+    padding: 50px 0;
+    letter-spacing: -1px;
+    nav {
+        margin-right: 250px;
+        margin-left: 250px;
+        
+    }
+}
+.columns-wrapper {
+    display: flex;
+    gap: 50px;
+    
+}
+.column {
+    width: 150px;
+}
+h1 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin-bottom: 5px;
+}
+a {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    color: #424245;
+}
+a:hover {
+    text-decoration-line: underline;
+}
+.space-line {
+    background-color: lightgray;
+    height: 1px;
+    width: auto;
+    margin: 10px 0;
+}
+.cypyright {
+    color: #737378;
+}
