@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "apple-store-online",
     "public": "dist/apple-store",
     "ignore": [
       "firebase.json",
