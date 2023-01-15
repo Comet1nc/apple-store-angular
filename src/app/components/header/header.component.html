@@ -1,16 +1,31 @@
-<div class="header bg">
+<div class="header">
     <nav class="container">
-        <ul>
+        <ul class="mobile-header">
+            <li class="icon"><span nz-icon nzType="bars" nzTheme="outline"></span></li>
+            <li class="li-logo">
+                
+                <img class="logo" src="https://lh3.googleusercontent.com/fife/AAbDypAtz_8Bwjx9Qtd5m3S4BWBhHMH2Wnayvoyw72jEQouHMX0XQJAtICtl1ZR9YhhQVtIZq7S9r2Dn4MPDoVls8RInnQwjUFZedheRWUmKgYljdzywayyT3ycn8HgoSpMdgtuTotSgFtZ2s9w64qSzt5A55_BcezYsAwanyHvLVja6hBPAKHkbGlBxudgto0Q1-Jcj9hng2TFoeWTOyonfHT-CWYbEWBHgg4htPMZtCv4wcB2DSP-O56h67D_uJLYMRZP8GWJprZxPHGFJlffmOa7hDupjew21PvvDLE-Y34Ycz4ujfy1e_SCdRJr7DEkwHhIrzLeAeFA-hLTQPu9HnQqDEwm4v1bbTzpilL84ZupaotWtSEVUr5Ac2p6Pmi1wIKBgf_pZR0Ind7mYTzNh66befArFlz5O_DbcNuCY8_ushenoOY1xjy-IBFjKhx_Mhs_JSGZwtdT2lmovWzrr-UJ-J8CsQULaR84H_rWW5QfbjvAAalMBzZ_o4AuJZ0dVrW67PEUv_BVcLFzDR6gJFLo0AMLpHhZDgMz7I_ZeB1V3KEjsy_Cd4aY-MYaWOdvzhNx5Qbt6oF7ZEKFXx8qFqRjNa5_QirsQ3S0lcMUoLv8Kx21ZS27LGzCIXyEN1vmcVxA4oFJJBEwRQRo9-oU-vyZTKhbgvvYAhylsE9cT3du1VccVwHy9qgEbAVQpj_Tq5dgBDPQX9TlSa5nAY72F_6s5WZoLBFAETgTA3zSRnZgckjFTFVQsArQAg1HLQ3liIIqV-bHbGcRU6AS2s-Wzbjmz-O-GKMiJV_jHEXbXEXSFPmTTd4rLV74PMQgyzv1XT0-Dq7v3OgndTfv7jm6oHKCzVblZ2w_5zqBoiNAiFOwKR-g5hDWil2WKQ5rzwzzSOQYG0NKHLLy8NV_qmvE55ob_7dNCXAus7sH9Lt4U66wwpCH3MJnbHDclny0blS8JZgjOsHPWR1fCxZbqUjWyQRHmpE5V6V2vgni9KmxkfzMHjIrxRfpJW8qod6pHnZ_8HuARVs3nYohTyBINaY4MLFvrY3NQoR3z2nXc2wEy1l712tYzDKzyla6_RVgPrRXJfOAN0kLMq6R7rAWcL3pBnWNki1_1qJV5nViArBnLZqNai-J6cWHr0GFPIUOZNUKqocUNVUGWu4KAvj7z16ENARqEyz-PwjFDOhcumkfkdwdDzCQlr8k3TmtGE_k1M8-L3lMmz-88QLumykLKe02mUkOKt0V_EHJO2w7qoILdwcdX7NPUvLx-VUk8kvUVgux_z7BgUYUfD0kMBu-rtbA7R8ltFoEKcRQALLbNVpLgy60X3tNa-xY-sgNTK-oebFZ3HHYeD-Z2t4ii1U6JahKWxwNowTf414nHper_cKHf98s_3ixDgTEKwHCAtpyWs85wWZ6rjzvY0b9B-IJ04-RVIpAsN6Qp-NMUIu9bSGa8uvzlQfbv_5wGx9lsj80dflO1JwYVirMkeCAVwvOQUsGLCyyZlqPmVN_6yil5h-xc2Y2RPA8JG-ipXMXz4wBLtindlEEbzKojkaaLbquiduU82AP1xcMKaQ=w1872-h939" alt="">
+            </li>
+            <li class="icon"><span class="cart" nz-icon nzType="shopping-cart" nzTheme="outline"></span></li>
+        </ul>
+        <div class="mobile-search">mobile search</div>
+        <!-- 'ul' hides when screen is small  -->
+        <ul class="navbar">    
+            <button (click)="animActive = !animActive">animstart</button>
             <li class="li-logo">
                 <img class="logo" src="https://lh3.googleusercontent.com/fife/AAbDypAtz_8Bwjx9Qtd5m3S4BWBhHMH2Wnayvoyw72jEQouHMX0XQJAtICtl1ZR9YhhQVtIZq7S9r2Dn4MPDoVls8RInnQwjUFZedheRWUmKgYljdzywayyT3ycn8HgoSpMdgtuTotSgFtZ2s9w64qSzt5A55_BcezYsAwanyHvLVja6hBPAKHkbGlBxudgto0Q1-Jcj9hng2TFoeWTOyonfHT-CWYbEWBHgg4htPMZtCv4wcB2DSP-O56h67D_uJLYMRZP8GWJprZxPHGFJlffmOa7hDupjew21PvvDLE-Y34Ycz4ujfy1e_SCdRJr7DEkwHhIrzLeAeFA-hLTQPu9HnQqDEwm4v1bbTzpilL84ZupaotWtSEVUr5Ac2p6Pmi1wIKBgf_pZR0Ind7mYTzNh66befArFlz5O_DbcNuCY8_ushenoOY1xjy-IBFjKhx_Mhs_JSGZwtdT2lmovWzrr-UJ-J8CsQULaR84H_rWW5QfbjvAAalMBzZ_o4AuJZ0dVrW67PEUv_BVcLFzDR6gJFLo0AMLpHhZDgMz7I_ZeB1V3KEjsy_Cd4aY-MYaWOdvzhNx5Qbt6oF7ZEKFXx8qFqRjNa5_QirsQ3S0lcMUoLv8Kx21ZS27LGzCIXyEN1vmcVxA4oFJJBEwRQRo9-oU-vyZTKhbgvvYAhylsE9cT3du1VccVwHy9qgEbAVQpj_Tq5dgBDPQX9TlSa5nAY72F_6s5WZoLBFAETgTA3zSRnZgckjFTFVQsArQAg1HLQ3liIIqV-bHbGcRU6AS2s-Wzbjmz-O-GKMiJV_jHEXbXEXSFPmTTd4rLV74PMQgyzv1XT0-Dq7v3OgndTfv7jm6oHKCzVblZ2w_5zqBoiNAiFOwKR-g5hDWil2WKQ5rzwzzSOQYG0NKHLLy8NV_qmvE55ob_7dNCXAus7sH9Lt4U66wwpCH3MJnbHDclny0blS8JZgjOsHPWR1fCxZbqUjWyQRHmpE5V6V2vgni9KmxkfzMHjIrxRfpJW8qod6pHnZ_8HuARVs3nYohTyBINaY4MLFvrY3NQoR3z2nXc2wEy1l712tYzDKzyla6_RVgPrRXJfOAN0kLMq6R7rAWcL3pBnWNki1_1qJV5nViArBnLZqNai-J6cWHr0GFPIUOZNUKqocUNVUGWu4KAvj7z16ENARqEyz-PwjFDOhcumkfkdwdDzCQlr8k3TmtGE_k1M8-L3lMmz-88QLumykLKe02mUkOKt0V_EHJO2w7qoILdwcdX7NPUvLx-VUk8kvUVgux_z7BgUYUfD0kMBu-rtbA7R8ltFoEKcRQALLbNVpLgy60X3tNa-xY-sgNTK-oebFZ3HHYeD-Z2t4ii1U6JahKWxwNowTf414nHper_cKHf98s_3ixDgTEKwHCAtpyWs85wWZ6rjzvY0b9B-IJ04-RVIpAsN6Qp-NMUIu9bSGa8uvzlQfbv_5wGx9lsj80dflO1JwYVirMkeCAVwvOQUsGLCyyZlqPmVN_6yil5h-xc2Y2RPA8JG-ipXMXz4wBLtindlEEbzKojkaaLbquiduU82AP1xcMKaQ=w1872-h939" alt="">
             </li>
-            <li><a>Mac</a></li>
-            <li><a>iPad</a></li>
+            <li [ngClass]="{'scale-out-and-fade-out': animActive}"><a>Mac</a></li>
+            <li class="fade-out scale-out-center"><a>iPad</a></li>
             <li><a>iPhone</a></li>
             <li><a>Watch</a></li>
             <li><span class="search" nz-icon nzType="search" nzTheme="outline"></span></li>
             <li><span class="cart" nz-icon nzType="shopping-cart" nzTheme="outline"></span></li>
         </ul>
+        <!-- see when search is opened -->
+        <aside class="searchview"></aside>
+        <!-- see when bag is opened -->
+        <aside class="bagview"></aside>
     </nav>
 </div>
 

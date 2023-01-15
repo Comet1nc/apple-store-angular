@@ -36,6 +36,8 @@ registerLocaleData(pl);
     
   ],
   providers: [DbService, { provide: NZ_I18N, useValue: pl_PL }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+  ]
 })
 export class AppModule { }
