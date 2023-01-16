@@ -1,37 +1,50 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
-import { trigger, style, transition, animate, group } from "@angular/animations";
+import { trigger, style, transition, animate, group, state } from "@angular/animations";
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
   animations: [
+    trigger('icon', [
+      state('open', 
+        style({
+          transform: 'rotate(45deg)'
+        })
+      ),
+      state('close', 
+        style({
+          transform: 'rotate(0)'
+        })
+      ),
+      transition('open <=> close', animate(150))
+    ]),
     trigger('column', [
       transition(':enter', [
         style({
-          opacity: 0,
-          transform: 'translateY(-10px)',
+          // opacity: 0,
+          // transform: 'translateY(-10px)',
           height: '10px',
         }),
         animate('100ms', style({
           height: '*'
         })),
         animate(200, style({
-          opacity: 1,
-          transform: 'translateY(0px)',
+          // opacity: 1,
+          // transform: 'translateY(0px)',
         }))
       ]),
       transition(':leave', [
         style({
-          opacity: 1
+          // opacity: 1
         }),
         group([
           animate(100, style({
-            opacity: 0,
-            transform: 'translateY(-20px)'
+            // opacity: 0,
+            // transform: 'translateY(-20px)'
           })),
-          animate('300ms', style({
+          animate('200ms', style({
             height: '0px'
           }))
         ])
@@ -40,7 +53,7 @@ import { trigger, style, transition, animate, group } from "@angular/animations"
   ]
 })
 export class FooterComponent implements OnInit, AfterViewInit {
-
+  
   @ViewChild('columnsWrapper') wrapper!: ElementRef;
   linksContainers!: HTMLCollectionOf<Element>;
   
@@ -48,6 +61,9 @@ export class FooterComponent implements OnInit, AfterViewInit {
   isVisibleLinks1: boolean = true
   isVisibleLinks2: boolean = true
   isVisibleLinks3: boolean = true
+  iconTransitionState_1 = 'close'
+  iconTransitionState_2 = 'close'
+  iconTransitionState_3 = 'close'
   showlinks: boolean = true
   inMobileMode: boolean = false
 
