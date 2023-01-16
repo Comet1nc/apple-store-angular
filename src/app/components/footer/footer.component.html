@@ -1,52 +1,8 @@
 <nav>
     <div class="columns-wrapper" #columnsWrapper>
-        <div  class="column">
-            <h1 style="border: none;" (click)='ChangeVisibility("links1")'>
-                Shop and Learn <span nz-icon nzType="plus" nzTheme="outline" [@icon]="iconTransitionState_1"></span>
-            </h1>
-            <div
-            [@column]="animState" 
-            (@column.start)="iconTransitionState_1 = iconTransitionState_1 === 'close' ? 'open' : 'close'" 
-            *ngIf="isVisibleLinks1" class="links-wrapper"
-            >
-                <a>Mac</a>
-                <a>iPad</a>
-                <a>iPhone</a>
-                <a>Watch</a>
-            </div>
-        </div>
-        <div class="column">
-            <h1 (click)='ChangeVisibility("links2")'>
-                Services <span nz-icon nzType="plus" nzTheme="outline" [@icon]="iconTransitionState_2"></span>
-            </h1>
-            <div
-            [@column]="animState" 
-            (@column.start)="iconTransitionState_2 = iconTransitionState_2 === 'close' ? 'open' : 'close'" 
-            *ngIf="isVisibleLinks2" class="links-wrapper"
-            >
-                <a>Apple Music</a>
-                <a>Apple TV+</a>
-                <a>Apple Fintess+</a>
-                <a>iCloud</a>
-            </div>
-        </div>
-        <div class="column">
-            <h1 (click)='ChangeVisibility("links3")'>
-                About Apple <span nz-icon nzType="plus" nzTheme="outline" [@icon]="iconTransitionState_3"></span>
-            </h1>
-            <div 
-            [@column]="animState" 
-            (@column.start)="iconTransitionState_3 = iconTransitionState_3 === 'close' ? 'open' : 'close'" 
-            *ngIf="isVisibleLinks3" class="links-wrapper"
-            >
-                <a>Contact Apple</a>
-                <a>Events</a>
-                <a>Investors</a>
-                <a>Newsroom</a>
-            </div>
-        </div>
-    </div>
-    <div class="space-line"></div>
+        <app-column *ngFor="let column of columnsData" [myColumnData]="column"></app-column>
+    </div> 
+    <hr>
     <div class="cypyright">Copyright © 2023 Apple Inc. All rights reserved.</div>
 </nav>
 

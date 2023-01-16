@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FooterComponent } from './components/footer/footer.component';
+import { ColumnComponent } from './components/footer/column/column.component';
 
 registerLocaleData(pl);
 
@@ -24,7 +25,8 @@ registerLocaleData(pl);
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ColumnComponent
   ],
   imports: [
     BrowserModule,

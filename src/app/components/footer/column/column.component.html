@@ -1,0 +1,13 @@
+<div class="column" #column>
+    <h1 class="title" (click)='ChangeLinksVisibility()'>
+        {{ myColumnData.title }} <span nz-icon nzType="plus" nzTheme="outline" [@icon]="iconAnimationState"></span>
+    </h1>
+    <div
+    [@column]="linksAnimationState" 
+    (@column.start)="iconAnimationState = iconAnimationState === 'close' ? 'open' : 'close'" 
+    *ngIf="isVisibleLinks" class="links-wrapper"
+    >
+        <a *ngFor="let name of myColumnData.linksName">{{ name }}</a>
+    </div>
+    <hr>
+</div>
