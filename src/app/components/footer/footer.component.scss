@@ -2,12 +2,16 @@ nav {
     background-color: #F5F5F7;
     padding: 35px 0;
     letter-spacing: -1px;
-    padding-left: 10vw;
-    padding-right: 10vw;
+    
+}
+.nav-wrapper {
+    margin: 0 auto;
+    max-width: 580px;
 }
 .columns-wrapper {
     display: flex;
     gap: 50px;
+    
 }
 hr {
     background-color: lightgray;

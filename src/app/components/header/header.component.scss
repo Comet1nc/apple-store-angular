@@ -1,5 +1,9 @@
 $contrast-level: 200%;
 
+button {
+    background-color: transparent;
+    border: none;
+}
 .header {
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: saturate(180%) blur(20px);
@@ -12,6 +16,7 @@ $contrast-level: 200%;
 .container {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 .navbar {
     color: rgb(179,179,179);
@@ -43,18 +48,138 @@ $contrast-level: 200%;
             filter: contrast($contrast-level);
         }
     }
-    .search {
-        transform: scale(0.9,0.9);
+    .apple-icon {
+        transform: scale(1.1); 
+        padding-bottom: 3px;
+    }
+    .btn-show-search {
+        padding: 0;
+    }
+    .search-icon {
         &:hover {
             cursor: pointer;
             filter: contrast($contrast-level);
         }
     }
-    .cart {
-        transform: scale(0.9,0.9);
+    .btn-show-cart {
+        padding: 0;
+    }
+    .cart-icon {
         &:hover {
             cursor: pointer;
             filter: contrast($contrast-level);
+        }
+    }
+}
+.searchview {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    .search-content {
+        max-width: 700px;
+        margin: 0 auto;
+        
+        height: calc(100vh - 16px);
+        z-index: 3;
+
+        .search-bar {
+            height: 44px;
+            display: flex;
+            
+
+            .search-form {
+                width: calc(100% - 45px);
+                display: flex;
+                
+
+                .btn-submit {
+                    padding: 0;
+                    
+                    &.active {
+                        cursor: pointer;
+                        filter: contrast($contrast-level);
+                    }
+
+                    .search-icon {
+                        transform: scale(1.3);
+                        width: 45px;
+                        color: rgb(148, 148, 148);
+                        &:hover {
+                            cursor: pointer;
+                            filter: contrast($contrast-level);
+                        }
+                    }
+                }
+                .search-input {
+                    background-color: transparent;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    color: white;
+                    border: none;
+                    height: 43px;
+                    font-size: 17px;
+                    width: calc(100% - 45px);
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+            .btn-close-searchview {
+                width: 45px;
+                transform: scale(1.2);
+                color: rgba(206, 205, 205, 0.732);
+                &:hover {
+                    cursor: pointer;
+                    filter: contrast($contrast-level);
+                }
+            }
+        }
+        .search-results {
+            background-color: white;
+            // height: 80vh;
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px;
+
+            .section {
+                margin: 0 40px;
+                padding-top: 23px;
+                padding-bottom: 18px;
+
+                h3 {
+                    color: rgb(125, 125, 125);
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    line-height: 1.33337;
+                    margin: 0;
+                }
+                ul {
+                    padding-top: 5px;
+                    font-weight: 400;
+
+                    li {
+                        margin: 5px -32px;
+                        padding: 6px 47px;
+                        color: #1d1d1f;
+
+                        &:hover {
+                            cursor: pointer;
+                            background-color: rgba(237, 237, 237, 0.52);
+
+                            a {
+                                color: rgb(23, 102, 239);
+                            }
+                        }
+                        a {
+                            color: black;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -64,6 +189,7 @@ $contrast-level: 200%;
 .mobile-search {
     display: none;
 }
+
 @media (max-width: 833px) {
     .navbar {
         display: none;
@@ -89,6 +215,10 @@ $contrast-level: 200%;
             padding-top: 2px;
             transform: scale(1.2);
         }
+        .apple-icon {
+            transform: scale(1.4); 
+            padding-bottom: 2px;
+        }
     }
     .mobile-search {
         display: block;
@@ -97,37 +227,3 @@ $contrast-level: 200%;
 }
 
 
-
-
-
-
-// animation
-// my anim
-.scale-out-and-fade-out {
-    -webkit-animation: scale-out-and-fade-out 0.4s ease-in both;
-	        animation: scale-out-and-fade-out 0.4s ease-in both;
-}
-@-webkit-keyframes scale-out-and-fade-out {
-    0% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      opacity: 0;
-    }
-}
-@keyframes scale-out-and-fade-out {
-    0% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      opacity: 0;
-    }
-}
