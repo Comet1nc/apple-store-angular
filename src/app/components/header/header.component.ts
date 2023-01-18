@@ -41,13 +41,23 @@ import { Component, OnInit } from '@angular/core';
               animate(150, style({
                 opacity: '1'
               })),
+              query('h3', [
+                style({
+                  opacity: '0',
+                  transform: 'translateX(50px)'
+                }),
+                animate(250, style({
+                  opacity: '1',
+                  transform: '*'
+                }))
+              ]),
               query('li', [
                 style({
                   opacity: '0',
-                  transform: 'translateX(20px)'
+                  transform: 'translateX(50px)'
                 }),
                 stagger('50ms ease-out', [
-                  animate(150, style({
+                  animate(250, style({
                     opacity: '1',
                     transform: '*'
                   }))
@@ -115,10 +125,19 @@ export class HeaderComponent implements OnInit {
   
   navBarIsVisible: boolean = true
   searchViewIsVisible: boolean = false
+  visible: boolean = false;
   
   constructor() { }
   
   ngOnInit(): void {
+  }
+
+  clickMe(): void {
+    this.visible = !this.visible;
+  }
+
+  change(value: boolean): void {
+    console.log(value);
   }
 
   ToggleNavbarVisibility() {

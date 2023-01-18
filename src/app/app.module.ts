@@ -17,6 +17,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FooterComponent } from './components/footer/footer.component';
 import { ColumnComponent } from './components/footer/column/column.component';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
 
 registerLocaleData(pl);
 
@@ -34,7 +35,8 @@ registerLocaleData(pl);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NzIconModule
+    NzIconModule,
+    NzPopoverModule
     
   ],
   providers: [DbService, { provide: NZ_I18N, useValue: pl_PL }],
