@@ -49,8 +49,9 @@ button {
         }
     }
     .apple-icon {
-        transform: scale(1.1); 
-        padding-bottom: 3px;
+        transform: scale(1.1);
+        transform: translateY(1px);
+        // padding-bottom: 3px;
     }
     .btn-show-search {
         padding: 0;

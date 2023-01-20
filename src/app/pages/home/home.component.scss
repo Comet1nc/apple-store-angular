@@ -49,7 +49,7 @@
         background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/home/home-component.iphone14-pro.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9ob21lL2hvbWUtY29tcG9uZW50LmlwaG9uZTE0LXByby5qcGciLCJpYXQiOjE2NzQyMzQ4MjEsImV4cCI6MTczNzMwNjgyMX0.BNdP-qDKnJrngXMEDnTmbm36jlAv0oR-qD9WKCNF5ZY&t=2023-01-20T17%3A13%3A41.842Z');
         position: absolute;
         top: 0;
-        width: 3008px;
+        width: 98vw;
         height: 750px;
         max-width: 99.1vw;
         background-repeat: no-repeat;
@@ -104,7 +104,7 @@
         background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/home/home-component.iphone-14.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9ob21lL2hvbWUtY29tcG9uZW50LmlwaG9uZS0xNC5qcGciLCJpYXQiOjE2NzQyMzQ3OTMsImV4cCI6MTczNzMwNjc5M30.uZuxlvPw5_8avqEyOyvK1xGYZEE0Urkm7VRLvVzqsoA&t=2023-01-20T17%3A13%3A13.562Z');
         position: absolute;
         top: 0;
-        width: 3008px;
+        width: 98vw;
         height: 750px;
         max-width: 99.1vw;
         background-repeat: no-repeat;
@@ -193,6 +193,7 @@
         color: black;
         position: relative;
         height: 605px;
+        align-items: center;
         .image {
             width: 99vw;
             background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/home/home-component-mobile.iphone14.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9ob21lL2hvbWUtY29tcG9uZW50LW1vYmlsZS5pcGhvbmUxNC5qcGciLCJpYXQiOjE2NzQyMzQ2OTIsImV4cCI6MTczNzMwNjY5Mn0.ty7YOGPbuyeoMqZnPXxpf3RTpfuamI1PSvBDHyYQmUE&t=2023-01-20T17%3A11%3A31.961Z');
