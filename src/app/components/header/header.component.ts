@@ -1,13 +1,20 @@
-import { trigger, style, transition, animate, query, group, stagger } from '@angular/animations';
+import { trigger, style, transition, animate, query, group, stagger, state, AnimationEvent} from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   animations: [
-    trigger('searchview', [
-      transition(':enter', [
+    trigger('searchviewDesktop', [
+      state('visible', style({
+        opacity: '1'
+      })),
+      state('invisible', style({
+        opacity: '0'
+      })),
+      transition('invisible => visible', [
         style({
           opacity: '1',
           background: 'transparent'
@@ -67,7 +74,7 @@ import { Component, OnInit } from '@angular/core';
           ])
         ]),
       ]),
-      transition(':leave', [
+      transition('visible => invisible', [
         group([
           style({
             opacity: '1'
@@ -78,8 +85,17 @@ import { Component, OnInit } from '@angular/core';
         ]),
       ])
     ]),
-    trigger('navbar', [
-      transition(':enter', [
+    trigger('navbarDesktop', [
+      state('visible', style({
+        opacity: '1'
+      })),
+      state('invisible', style({
+        opacity: '0'
+      })),
+      transition('invisible => visible', [
+        style({
+          opacity: '1'
+        }),
         group([
           query('li', [
             style({
@@ -102,9 +118,8 @@ import { Component, OnInit } from '@angular/core';
             ])
           ])
         ])
-        
       ]),
-      transition(':leave', [
+      transition('visible => invisible', [
         group([
           query('li', stagger(-50, [
             animate(300, style({
@@ -122,38 +137,120 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class HeaderComponent implements OnInit {
+  sidenavIsOpen: boolean = false
+  mobileSearchViewIsVisible: boolean = false
   
+  desktopSearchViewIsVisible: boolean = false
+  searchViewDesktopAnimationState: SearchViewAnimationStates = SearchViewAnimationStates.invisible
+  
+  bagViewIsVisible: boolean = false;
+
   navBarIsVisible: boolean = true
-  searchViewIsVisible: boolean = false
-  visible: boolean = false;
+  navBarDesktopAnimationState: NavBarAnimationStates = NavBarAnimationStates.visible
   
-  constructor() { }
+  constructor(private breakpointObserver: BreakpointObserver) { }
   
   ngOnInit(): void {
+    this.breakpointObserver.observe([
+      "(max-width: 833px)"
+    ]).subscribe((result: BreakpointState) => {
+      if (result.matches) {
+        // Executes when sreen is small
+
+        this.CloseSearchView() 
+        this.navBarIsVisible = false
+        
+      } else {
+        // Executes when sreen is huge
+        
+        this.navBarIsVisible = true
+      }
+    });
   }
 
-  clickMe(): void {
-    this.visible = !this.visible;
+  ChangeStateSideNav() {
+    // console.log('click')
+    if(this.sidenavIsOpen) {
+      this.sidenavIsOpen = false
+      this.navBarIsVisible = false
+      this.mobileSearchViewIsVisible = false
+    } else {
+      this.sidenavIsOpen = true
+      this.navBarIsVisible = true
+      this.mobileSearchViewIsVisible = true
+    }
+    
   }
 
-  change(value: boolean): void {
-    console.log(value);
+  ChangeBagViewVisibility(): void {
+    this.bagViewIsVisible = !this.bagViewIsVisible;
   }
 
-  ToggleNavbarVisibility() {
-    this.navBarIsVisible = !this.navBarIsVisible
+  onNavBarDesktopAnimationDone(event: AnimationEvent) {
+    // after "visible => invisible" transition, hide nav bar
+    if(event.fromState === 'visible' && event.toState === 'invisible') {
+      this.navBarIsVisible = false
+    }
+  }
+
+  onSearchViewDesktopAnimationDone(event: AnimationEvent) {
+    // after "visible => invisible" transition, hide search view
+    if(event.fromState === 'visible' && event.toState === 'invisible') {
+      this.desktopSearchViewIsVisible = false
+    }
   }
 
   ShowSearchView() {
-    this.ToggleNavbarVisibility()
-    this.searchViewIsVisible = true
+    // Hide navbar
+    this.ToggleDesktopNavbarAnimationState(NavBarAnimationStates.invisible)
+    // Show search view
+    this.ToggleDesktopSearchViewAnimationState(SearchViewAnimationStates.visible)
   }
 
   CloseSearchView() {
-    this.searchViewIsVisible = false
-    setTimeout(() => {
-      this.ToggleNavbarVisibility()
-    }, 150);
+    // prevents some bug
+    if(this.desktopSearchViewIsVisible && !this.navBarIsVisible) {
+      // Hide search view
+      this.ToggleDesktopSearchViewAnimationState(SearchViewAnimationStates.invisible)
+      // Show navbar
+      setTimeout(() => { // this delay is for beautiful sequence, not necessary
+        this.ToggleDesktopNavbarAnimationState(NavBarAnimationStates.visible)
+      }, 150);
+    }
   }
 
+  ToggleDesktopSearchViewAnimationState(state: SearchViewAnimationStates) {
+    // if trying animate from invisible to visible, show element
+    if(
+      state === SearchViewAnimationStates.visible 
+      && this.searchViewDesktopAnimationState === SearchViewAnimationStates.invisible
+    ) {
+      this.desktopSearchViewIsVisible = true
+    }
+    //changing animation state
+    setTimeout(() => { // delay is necessary. 
+      this.searchViewDesktopAnimationState = state
+    }, 10);
+  }
+
+  ToggleDesktopNavbarAnimationState(state: NavBarAnimationStates) {
+    // if trying animate from invisible to visible, show element
+    if(state === NavBarAnimationStates.visible && this.navBarDesktopAnimationState === NavBarAnimationStates.invisible) {
+      this.navBarIsVisible = true
+    }
+    setTimeout(() => { // delay is necessary. 
+      this.navBarDesktopAnimationState = state
+    }, 10);
+  }
+
+}
+
+enum NavBarAnimationStates {
+  visible = 'visible',
+  invisible = 'invisible'
+}
+
+enum SearchViewAnimationStates {
+  visible = 'visible',
+  invisible = 'invisible'
 }

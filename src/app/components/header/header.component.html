@@ -1,16 +1,20 @@
 <div class="header">
     <nav class="container">
-        <!-- ui for mobile view -->
+        <!-- ui for mobile view / only for mobile-->
         <ul class="mobile-header">
-            <li class="icon"><span nz-icon nzType="bars" nzTheme="outline"></span></li>
+            <li class="icon"><button class="btn-open-sidenav" (click)="ChangeStateSideNav()"><span nz-icon nzType="bars" nzTheme="outline"></span></button></li>
             <li class="li-logo">
                 <span class="apple-icon" nz-icon nzType="apple" nzTheme="fill"></span>
             </li>
             <li class="icon"><span class="cart" nz-icon nzType="shopping-cart" nzTheme="outline"></span></li>
         </ul>
-        <div class="mobile-search">mobile search</div>
-        <!-- ui for desktop view  -->
-        <ul class="navbar" [@navbar] *ngIf="navBarIsVisible">
+        <div class="mobile-search" *ngIf="mobileSearchViewIsVisible">mobile search</div>
+        <!-- ui for desktop/mobile view / reponsive-->
+        <ul
+        class="navbar" 
+        [@navbarDesktop]="navBarDesktopAnimationState" 
+        (@navbarDesktop.done)="onNavBarDesktopAnimationDone($event)" 
+        *ngIf="navBarIsVisible">
             <li class="li-logo">
                 <span class="apple-icon logo" nz-icon nzType="apple" nzTheme="fill"></span>
             </li>
@@ -24,8 +28,7 @@
                 class="btn-show-cart" nz-button
                 nzType="primary"
                 nz-popover
-                [(nzPopoverVisible)]="visible"
-                (nzPopoverVisibleChange)="change($event)"
+                [(nzPopoverVisible)]="bagViewIsVisible"
                 nzPopoverTrigger="click"
                 [nzPopoverContent]="contentTemplate"
                 [nzPopoverPlacement]="'bottom'"
@@ -35,9 +38,12 @@
                 </button>
             </li>
         </ul>
-        
-        <!-- see when search is opened -->
-        <aside [@searchview] *ngIf="searchViewIsVisible" class="searchview">
+        <!-- see when search is opened / only for desktop-->
+        <aside 
+        [@searchviewDesktop]="searchViewDesktopAnimationState" 
+        (@searchviewDesktop.done)="onSearchViewDesktopAnimationDone($event)"
+        *ngIf="desktopSearchViewIsVisible" 
+        class="searchview">
             <div class="search-content">
                 <div class="search-bar">
                     <form class="search-form" action="">
@@ -61,11 +67,11 @@
                 </aside>
             </div>
         </aside>
-        <!-- see when bag is opened -->
+        <!-- see when bag is opened / responsive -->
         <aside class="bagview">
             <ng-template #contentTemplate>
                 <div class="bagview-content">
-                    <button (click)="clickMe()" class="btn-close-bagview"><span nz-icon nzType="plus" nzTheme="outline" [nzRotate]="45"></span></button>
+                    <button (click)="ChangeBagViewVisibility()" class="btn-close-bagview"><span nz-icon nzType="plus" nzTheme="outline" [nzRotate]="45"></span></button>
                     <p>Your Bag is empty.</p>
                     <nav>
                         <ul>
@@ -88,8 +94,6 @@
                         </ul>
                     </nav>
                 </div>
-                
-                <!-- <a (click)="clickMe()">Close</a> -->
             </ng-template>
         </aside>
     </nav>

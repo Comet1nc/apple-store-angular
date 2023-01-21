@@ -234,11 +234,12 @@ button {
 
 @media (max-width: 833px) {
     .navbar {
-        display: none;
+        // display: none;
     }
     .container {
         display: block;
         position: relative;
+        // top: -100px;
     }
     .mobile-header {
         display: flex;
@@ -246,6 +247,9 @@ button {
         margin-top: 15px;
         margin-bottom: 15px;
         padding: 0 20px;
+        .btn-open-sidenav {
+            padding: 0;
+        }
         .logo {
             width: auto;
             height: 19px;
