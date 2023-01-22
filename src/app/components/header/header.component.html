@@ -1,31 +1,77 @@
-<div class="header">
+<div class="header" #header>
     <nav class="container">
         <!-- ui for mobile view / only for mobile-->
-        <ul class="mobile-header">
-            <li class="icon"><button class="btn-open-sidenav" (click)="ChangeStateSideNav()"><span nz-icon nzType="bars" nzTheme="outline"></span></button></li>
+        <ul class="mobile-header" *ngIf="!mobileEditModeActivated">
+            <li class="icon">
+                <button class="btn-open-sidenav" (click)="ChangeStateSideNav(header)" >
+                    <span nz-icon nzType="bars" nzTheme="outline"></span>
+                </button>
+            </li>
             <li class="li-logo">
                 <span class="apple-icon" nz-icon nzType="apple" nzTheme="fill"></span>
             </li>
-            <li class="icon"><span class="cart" nz-icon nzType="shopping-cart" nzTheme="outline"></span></li>
+            <li class="icon li-show-cart" (click)="onMobileCartClick(contentTemplate)">
+                <button *ngIf="!navBarIsVisible"
+                class="btn-show-cart"
+                nz-button
+                nzType="primary"
+                nz-popover
+                [(nzPopoverVisible)]="bagViewIsVisible"
+                nzPopoverTrigger="click"
+                [nzPopoverContent]="contentTemplate"
+                [nzPopoverPlacement]="'bottom'"
+                [nzPopoverOverlayClassName]="'bagview-popover'">
+                    <span *ngIf="!sidenavIsOpen" class="cart" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+                </button>
+            </li>
         </ul>
-        <div class="mobile-search" *ngIf="mobileSearchViewIsVisible">mobile search</div>
+        <!-- ui for mobile view / only for mobile -->
+        <div class="mobile-search" 
+        *ngIf="mobileSearchViewIsVisible" 
+        [ngClass]="mobileEditModeActivated ? 'mobile-search-edit-mode' : ''">
+            <div class="searchwrapper" (click)="EnterEditMode()">
+                <span class="search-icon" nz-icon nzType="search" nzTheme="outline"></span>
+                <input class="input-search" type="text" placeholder="Search apple.com">
+                <button class="btn-reset-input" *ngIf="false">
+                    <span nz-icon nzType="plus-circle" nzTheme="fill" [nzRotate]="45"></span>
+                </button>
+            </div>
+            <button class="btn-close-search-typing" *ngIf="mobileEditModeActivated" (click)="CloseEditMode()">Cancel</button>
+        </div>
+        <!-- ui for mobile view / only for mobile -->
+        <aside class="mobile-search-results navbar" *ngIf="mobileEditModeActivated">
+            <section class="section">
+                <h3>QUICK LINKS</h3>
+                <ul>
+                    <li><a href="">Iphone 14</a></li>
+                    <li><a href="">iPad</a></li>
+                    <li><a href="">Mac</a></li>
+                    <li><a href="">Watch</a></li>
+                </ul>
+            </section>
+        </aside>
         <!-- ui for desktop/mobile view / reponsive-->
         <ul
         class="navbar" 
         [@navbarDesktop]="navBarDesktopAnimationState" 
         (@navbarDesktop.done)="onNavBarDesktopAnimationDone($event)" 
-        *ngIf="navBarIsVisible">
-            <li class="li-logo">
+        *ngIf="navBarIsVisible && !mobileEditModeActivated">
+            <li class="apple-logo li-logo">
                 <span class="apple-icon logo" nz-icon nzType="apple" nzTheme="fill"></span>
             </li>
-            <li><a>Mac</a></li>
+            <li class="first-link"><a>Mac</a></li>
             <li class="fade-out scale-out-center"><a>iPad</a></li>
             <li><a>iPhone</a></li>
-            <li><a>Watch</a></li>
-            <li><button class="btn-show-search" (click)="ShowSearchView()"><span class="search-icon" nz-icon nzType="search" nzTheme="outline"></span></button></li>
-            <li>
+            <li class="last-link"><a>Watch</a></li>
+            <li class="search-btn">
+                <button class="btn-show-search" (click)="ShowSearchView()">
+                    <span class="search-icon" nz-icon nzType="search" nzTheme="outline"></span>
+                </button>
+            </li>
+            <li class="cart-btn">
                 <button 
-                class="btn-show-cart" nz-button
+                class="btn-show-cart" 
+                nz-button
                 nzType="primary"
                 nz-popover
                 [(nzPopoverVisible)]="bagViewIsVisible"
@@ -40,10 +86,10 @@
         </ul>
         <!-- see when search is opened / only for desktop-->
         <aside 
+        class="searchview"
         [@searchviewDesktop]="searchViewDesktopAnimationState" 
         (@searchviewDesktop.done)="onSearchViewDesktopAnimationDone($event)"
-        *ngIf="desktopSearchViewIsVisible" 
-        class="searchview">
+        *ngIf="desktopSearchViewIsVisible">
             <div class="search-content">
                 <div class="search-bar">
                     <form class="search-form" action="">
@@ -52,7 +98,9 @@
                         </button>
                         <input placeholder="Search apple.com" class="search-input" type="text">
                     </form>
-                    <button (click)="CloseSearchView()" class="btn-close-searchview"><span nz-icon nzType="plus" nzTheme="outline" [nzRotate]="45"></span></button>
+                    <button (click)="CloseSearchView()" class="btn-close-searchview">
+                        <span nz-icon nzType="plus" nzTheme="outline" [nzRotate]="45"></span>
+                    </button>
                 </div>
                 <aside class="search-results">
                     <section class="section">
@@ -71,25 +119,27 @@
         <aside class="bagview">
             <ng-template #contentTemplate>
                 <div class="bagview-content">
-                    <button (click)="ChangeBagViewVisibility()" class="btn-close-bagview"><span nz-icon nzType="plus" nzTheme="outline" [nzRotate]="45"></span></button>
+                    <button (click)="ChangeBagViewVisibility()" class="btn-close-bagview">
+                        <span nz-icon nzType="plus" nzTheme="outline" [nzRotate]="45"></span>
+                    </button>
                     <p>Your Bag is empty.</p>
                     <nav>
                         <ul>
                             <li>
                                 <span class="cart-icon" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
-                                <a href="">Bag</a>
+                                <a>Bag</a>
                             </li>
                             <li>
                                 <span nz-icon nzType="book" nzTheme="outline" style="transform: scale(1.1)"></span>
-                                <a href="">Saved Items</a>
+                                <a>Saved Items</a>
                             </li>
                             <li>
                                 <span nz-icon nzType="inbox" nzTheme="outline" style="transform: scale(1.3)"></span>
-                                <a href="">Orders</a>
+                                <a>Orders</a>
                             </li>
                             <li>
                                 <span nz-icon nzType="user" nzTheme="outline"></span>
-                                <a href="">Sign in</a>
+                                <a>Sign in</a>
                             </li>
                         </ul>
                     </nav>

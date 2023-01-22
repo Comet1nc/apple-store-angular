@@ -1,5 +1,5 @@
 import { trigger, style, transition, animate, query, group, stagger, state, AnimationEvent} from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
 
 @Component({
@@ -139,6 +139,7 @@ import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
 export class HeaderComponent implements OnInit {
   sidenavIsOpen: boolean = false
   mobileSearchViewIsVisible: boolean = false
+  mobileEditModeActivated: boolean = false
   
   desktopSearchViewIsVisible: boolean = false
   searchViewDesktopAnimationState: SearchViewAnimationStates = SearchViewAnimationStates.invisible
@@ -147,6 +148,8 @@ export class HeaderComponent implements OnInit {
 
   navBarIsVisible: boolean = true
   navBarDesktopAnimationState: NavBarAnimationStates = NavBarAnimationStates.visible
+
+  headerRef!: HTMLDivElement;
   
   constructor(private breakpointObserver: BreakpointObserver) { }
   
@@ -157,33 +160,75 @@ export class HeaderComponent implements OnInit {
       if (result.matches) {
         // Executes when sreen is small
 
+        this.ChangeBagViewVisibility(false)
         this.CloseSearchView() 
         this.navBarIsVisible = false
         
       } else {
         // Executes when sreen is huge
-        
+        // run queue is important
+
+        this.ChangeBagViewVisibility(false)
+        this.CloseEditMode() 
+
+        if(this.sidenavIsOpen) { // if sidenav is opened, close it
+          this.headerRef.classList.remove('black-bg')
+          this.sidenavIsOpen = false
+          this.mobileSearchViewIsVisible = false
+        }
+
         this.navBarIsVisible = true
+        
       }
     });
   }
 
-  ChangeStateSideNav() {
-    // console.log('click')
-    if(this.sidenavIsOpen) {
-      this.sidenavIsOpen = false
-      this.navBarIsVisible = false
-      this.mobileSearchViewIsVisible = false
-    } else {
-      this.sidenavIsOpen = true
-      this.navBarIsVisible = true
-      this.mobileSearchViewIsVisible = true
+  onMobileCartClick(element: TemplateRef<HTMLElement>) {
+    if(!this.bagViewIsVisible) {
+      console.log(element)
     }
     
   }
 
-  ChangeBagViewVisibility(): void {
-    this.bagViewIsVisible = !this.bagViewIsVisible;
+  EnterEditMode() {
+    this.mobileEditModeActivated = true
+    console.log(this.headerRef)
+  }
+
+  CloseEditMode() {
+    this.mobileEditModeActivated = false
+  }
+
+  ChangeStateSideNav(header: HTMLDivElement) {
+
+    this.headerRef = header
+
+    // closing sidenav
+    if(this.sidenavIsOpen) {
+      this.sidenavIsOpen = false
+      this.navBarIsVisible = false
+      this.mobileSearchViewIsVisible = false
+      header.classList.remove('black-bg')
+      window.scrollTo(0, 0);
+    } else { // opening sidenav
+      this.sidenavIsOpen = true
+      this.navBarIsVisible = true
+      this.mobileSearchViewIsVisible = true
+      header.classList.add('black-bg')
+      window.scrollTo(0, 0);
+    }
+    
+  }
+
+  ChangeBagViewVisibility(state?: boolean): void {
+    if(state !== undefined) {
+      console.log('state')
+      this.bagViewIsVisible = state
+    } else {
+      this.bagViewIsVisible = !this.bagViewIsVisible;
+    }
+    
+    
   }
 
   onNavBarDesktopAnimationDone(event: AnimationEvent) {

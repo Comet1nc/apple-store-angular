@@ -20,8 +20,27 @@ ul {
 figure {
     margin: 0;
 }
+input {
+    &:focus {
+        outline: none;
+    }
+}
 // body {
 //     height: 100%;
 //     overflow-y: hidden;
 // }
-// image expire time 63 072 000 s 
+// image expire time 63 072 000 s
+
+// poor ui library makes me overwrite styles here :(
+@media (max-width: 833px) { 
+    .bagview-popover {
+        width: 100vw;
+        .ant-popover-arrow {
+            transform: translateX(150px);
+        }
+        .ant-popover-inner {
+            border-radius: 0px;
+        }
+        
+    }
+}
