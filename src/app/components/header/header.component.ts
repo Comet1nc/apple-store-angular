@@ -133,6 +133,91 @@ import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
           ]))
         ])  
       ])
+    ]),
+    trigger('mobileBag', [
+      transition(':enter', [
+        style({
+          opacity: '0'
+        }),
+        animate(300, style({
+          opacity: '1'
+        }))
+      ]),
+      // transition(':leave', [
+      //   style({
+      //     opacity: '1'
+      //   }),
+      //   animate(300, style({
+      //     opacity: '0'
+      //   }))
+      // ])
+    ]),
+    trigger('mobileNav', [
+      state('closed', style({
+        opacity: '1',
+      })),
+      state('opened', style({
+        opacity: '1'
+      })),
+      state('editMode', style({
+        opacity: '1'
+      })),
+      transition('closed => opened', [
+        // group([
+          query('.navbar', [
+            style({
+              height: '0'
+            })
+          ], { optional: true}),
+          query('.mobile-search', [
+            style({
+              height: '0',
+              paddingBottom: '0'
+            }),
+            animate(150, style({
+              height: '*',
+              paddingBottom: '*'
+            }))
+          ]),
+          query('.navbar', [
+            style({
+              height: '0'
+            }),
+            animate('400ms linear', style({
+              height: '*'
+            }))
+          ], { optional: true}),
+          
+        // ])
+      ]),
+      transition('opened => closed', [
+        // group([
+          // query('.navbar', [
+          //   style({
+          //     height: '*'
+          //   })
+          // ], { optional: true}),
+          
+          query('.navbar', [
+            style({
+              height: '100vh'
+            }),
+            animate(400, style({
+              height: '0vh'
+            }))
+          ], { optional: true}),
+          query('.mobile-search', [
+            style({
+              height: '*',
+              paddingBottom: '*'
+            }),
+            animate(150, style({
+              height: '0',
+              paddingBottom: '0'
+            }))
+          ])
+        // ])
+      ])
     ])
   ]
 })
@@ -140,6 +225,7 @@ export class HeaderComponent implements OnInit {
   sidenavIsOpen: boolean = false
   mobileSearchViewIsVisible: boolean = false
   mobileEditModeActivated: boolean = false
+  mobileSideNavAnimationState: MobileSideNavAnimationStates = MobileSideNavAnimationStates.closed
   
   desktopSearchViewIsVisible: boolean = false
   searchViewDesktopAnimationState: SearchViewAnimationStates = SearchViewAnimationStates.invisible
@@ -205,17 +291,26 @@ export class HeaderComponent implements OnInit {
 
     // closing sidenav
     if(this.sidenavIsOpen) {
-      this.sidenavIsOpen = false
-      this.navBarIsVisible = false
-      this.mobileSearchViewIsVisible = false
-      header.classList.remove('black-bg')
-      window.scrollTo(0, 0);
+      // closing animation
+      this.mobileSideNavAnimationState = MobileSideNavAnimationStates.closed
+
+      setTimeout(() => { // waiting for animation end
+        this.sidenavIsOpen = false
+        this.navBarIsVisible = false
+        this.mobileSearchViewIsVisible = false
+        header.classList.remove('black-bg')
+        window.scrollTo(0, 0);
+      }, 405);
+      
     } else { // opening sidenav
       this.sidenavIsOpen = true
       this.navBarIsVisible = true
       this.mobileSearchViewIsVisible = true
       header.classList.add('black-bg')
       window.scrollTo(0, 0);
+      
+      //animation
+      this.mobileSideNavAnimationState = MobileSideNavAnimationStates.opened
     }
     
   }
@@ -298,4 +393,9 @@ enum NavBarAnimationStates {
 enum SearchViewAnimationStates {
   visible = 'visible',
   invisible = 'invisible'
+}
+enum MobileSideNavAnimationStates {
+  opened = 'opened',
+  closed = 'closed',
+  editMode = 'editMode'
 }

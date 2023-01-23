@@ -321,6 +321,7 @@ button {
         }
     }
     .mobile-search {
+        overflow: hidden;
         display: flex;
         height: 53px;
         max-width: 584px;
@@ -370,6 +371,7 @@ button {
         }
     }
     .navbar {
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         max-height: 100vh;

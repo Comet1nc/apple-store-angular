@@ -34,9 +34,8 @@ input {
 // poor ui library makes me overwrite styles here :(
 @media (max-width: 833px) { 
     .bagview-popover {
-        width: 100vw;
         .ant-popover-arrow {
-            transform: translateX(150px);
+            display: none;
         }
         .ant-popover-inner {
             border-radius: 0px;

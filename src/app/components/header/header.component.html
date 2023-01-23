@@ -1,5 +1,5 @@
 <div class="header" #header>
-    <nav class="container">
+    <nav class="container" [@mobileNav]="mobileSideNavAnimationState">
         <!-- ui for mobile view / only for mobile-->
         <ul class="mobile-header" *ngIf="!mobileEditModeActivated">
             <li class="icon">
@@ -11,7 +11,8 @@
                 <span class="apple-icon" nz-icon nzType="apple" nzTheme="fill"></span>
             </li>
             <li class="icon li-show-cart" (click)="onMobileCartClick(contentTemplate)">
-                <button *ngIf="!navBarIsVisible"
+                <button *ngIf="!navBarIsVisible && !sidenavIsOpen"
+                [@mobileBag]
                 class="btn-show-cart"
                 nz-button
                 nzType="primary"
@@ -21,7 +22,7 @@
                 [nzPopoverContent]="contentTemplate"
                 [nzPopoverPlacement]="'bottom'"
                 [nzPopoverOverlayClassName]="'bagview-popover'">
-                    <span *ngIf="!sidenavIsOpen" class="cart" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+                    <span  class="cart" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
                 </button>
             </li>
         </ul>
@@ -69,7 +70,8 @@
                 </button>
             </li>
             <li class="cart-btn">
-                <button 
+                <button
+                *ngIf="navBarIsVisible"
                 class="btn-show-cart" 
                 nz-button
                 nzType="primary"
