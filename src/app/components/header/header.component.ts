@@ -134,24 +134,24 @@ import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
         ])  
       ])
     ]),
-    trigger('mobileBag', [
-      transition(':enter', [
-        style({
-          opacity: '0'
-        }),
-        animate(300, style({
-          opacity: '1'
-        }))
-      ]),
-      // transition(':leave', [
-      //   style({
-      //     opacity: '1'
-      //   }),
-      //   animate(300, style({
-      //     opacity: '0'
-      //   }))
-      // ])
-    ]),
+    // trigger('mobileBag', [
+    //   transition(':enter', [
+    //     style({
+    //       opacity: '0'
+    //     }),
+    //     animate(300, style({
+    //       opacity: '1'
+    //     }))
+    //   ]),
+    //   transition(":leave", [
+    //     style({
+    //       opacity: '1'
+    //     }),
+    //     animate(750, style({
+    //       opacity: '0',
+    //     }))
+    //   ])
+    // ]),
     trigger('mobileNav', [
       state('closed', style({
         opacity: '1',
@@ -163,32 +163,29 @@ import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
         opacity: '1'
       })),
       transition('closed => opened', [
-        // group([
-          query('.navbar', [
-            style({
-              height: '0'
-            })
-          ], { optional: true}),
-          query('.mobile-search', [
-            style({
-              height: '0',
-              paddingBottom: '0'
-            }),
-            animate(150, style({
-              height: '*',
-              paddingBottom: '*'
-            }))
-          ]),
-          query('.navbar', [
-            style({
-              height: '0'
-            }),
-            animate('400ms linear', style({
-              height: '*'
-            }))
-          ], { optional: true}),
-          
-        // ])
+        query('.navbar', [
+          style({
+            height: '0'
+          })
+        ], { optional: true}),
+        query('.mobile-search', [
+          style({
+            height: '0',
+            paddingBottom: '0'
+          }),
+          animate(150, style({
+            height: '*',
+            paddingBottom: '*'
+          }))
+        ]),
+        query('.navbar', [
+          style({
+            height: '0'
+          }),
+          animate('400ms linear', style({
+            height: '*'
+          }))
+        ], { optional: true}),
       ]),
       transition('opened => closed', [
         // group([
@@ -236,6 +233,8 @@ export class HeaderComponent implements OnInit {
   navBarDesktopAnimationState: NavBarAnimationStates = NavBarAnimationStates.visible
 
   headerRef!: HTMLDivElement;
+
+  bagBtn = true
   
   constructor(private breakpointObserver: BreakpointObserver) { }
   
@@ -288,12 +287,13 @@ export class HeaderComponent implements OnInit {
   ChangeStateSideNav(header: HTMLDivElement) {
 
     this.headerRef = header
-
+    
     // closing sidenav
     if(this.sidenavIsOpen) {
+      
       // closing animation
       this.mobileSideNavAnimationState = MobileSideNavAnimationStates.closed
-
+      
       setTimeout(() => { // waiting for animation end
         this.sidenavIsOpen = false
         this.navBarIsVisible = false
@@ -331,6 +331,7 @@ export class HeaderComponent implements OnInit {
     if(event.fromState === 'visible' && event.toState === 'invisible') {
       this.navBarIsVisible = false
     }
+    
   }
 
   onSearchViewDesktopAnimationDone(event: AnimationEvent) {

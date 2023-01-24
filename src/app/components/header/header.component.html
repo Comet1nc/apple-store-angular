@@ -11,8 +11,8 @@
                 <span class="apple-icon" nz-icon nzType="apple" nzTheme="fill"></span>
             </li>
             <li class="icon li-show-cart" (click)="onMobileCartClick(contentTemplate)">
-                <button *ngIf="!navBarIsVisible && !sidenavIsOpen"
-                [@mobileBag]
+                <button 
+                *ngIf="!navBarIsVisible && !sidenavIsOpen"
                 class="btn-show-cart"
                 nz-button
                 nzType="primary"
@@ -22,7 +22,7 @@
                 [nzPopoverContent]="contentTemplate"
                 [nzPopoverPlacement]="'bottom'"
                 [nzPopoverOverlayClassName]="'bagview-popover'">
-                    <span  class="cart" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+                    <span class="cart" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
                 </button>
             </li>
         </ul>
