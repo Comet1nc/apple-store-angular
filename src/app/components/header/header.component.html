@@ -1,7 +1,7 @@
 <div class="header" #header>
     <nav class="container" [@mobileNav]="mobileSideNavAnimationState">
         <!-- ui for mobile view / only for mobile-->
-        <ul class="mobile-header" *ngIf="!mobileEditModeActivated">
+        <ul class="mobile-header" *ngIf="!mobileEditModeActivated" [@mobile-header]>
             <li class="icon">
                 <button class="btn-open-sidenav" (click)="ChangeStateSideNav(header)" >
                     <span nz-icon nzType="bars" nzTheme="outline"></span>
@@ -11,8 +11,10 @@
                 <span class="apple-icon" nz-icon nzType="apple" nzTheme="fill"></span>
             </li>
             <li class="icon li-show-cart" (click)="onMobileCartClick(contentTemplate)">
+                <!-- *ngIf="!navBarIsVisible && !sidenavIsOpen"  -->
                 <button 
-                *ngIf="!navBarIsVisible && !sidenavIsOpen"
+                *ngIf="bagBtn"
+                [@mobileBag]
                 class="btn-show-cart"
                 nz-button
                 nzType="primary"

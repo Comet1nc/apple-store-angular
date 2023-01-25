@@ -134,24 +134,24 @@ import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
         ])  
       ])
     ]),
-    // trigger('mobileBag', [
-    //   transition(':enter', [
-    //     style({
-    //       opacity: '0'
-    //     }),
-    //     animate(300, style({
-    //       opacity: '1'
-    //     }))
-    //   ]),
-    //   transition(":leave", [
-    //     style({
-    //       opacity: '1'
-    //     }),
-    //     animate(750, style({
-    //       opacity: '0',
-    //     }))
-    //   ])
-    // ]),
+    trigger('mobileBag', [
+      transition(':enter', [
+        style({
+          opacity: '0'
+        }),
+        animate(300, style({
+          opacity: '1'
+        }))
+      ]),
+      transition(":leave", [
+        style({
+          opacity: '1'
+        }),
+        animate(300, style({
+          opacity: '0',
+        }))
+      ])
+    ]),
     trigger('mobileNav', [
       state('closed', style({
         opacity: '1',
@@ -215,14 +215,18 @@ import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
           ])
         // ])
       ])
+    ]),
+    trigger('mobile-header', [
+      // transform: 'translateY(-39px)'
     ])
   ]
 })
 export class HeaderComponent implements OnInit {
   sidenavIsOpen: boolean = false
+  mobileSideNavAnimationState: MobileSideNavAnimationStates = MobileSideNavAnimationStates.closed
+
   mobileSearchViewIsVisible: boolean = false
   mobileEditModeActivated: boolean = false
-  mobileSideNavAnimationState: MobileSideNavAnimationStates = MobileSideNavAnimationStates.closed
   
   desktopSearchViewIsVisible: boolean = false
   searchViewDesktopAnimationState: SearchViewAnimationStates = SearchViewAnimationStates.invisible
@@ -268,6 +272,14 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  ToggleMobileBag(value?: boolean) {
+    if(value !== undefined) {
+      this.bagBtn = value
+    } else {
+      this.bagBtn = !this.bagBtn
+    }
+  }
+
   onMobileCartClick(element: TemplateRef<HTMLElement>) {
     if(!this.bagViewIsVisible) {
       console.log(element)
@@ -287,12 +299,15 @@ export class HeaderComponent implements OnInit {
   ChangeStateSideNav(header: HTMLDivElement) {
 
     this.headerRef = header
-    
-    // closing sidenav
+
     if(this.sidenavIsOpen) {
       
       // closing animation
       this.mobileSideNavAnimationState = MobileSideNavAnimationStates.closed
+
+      setTimeout(() => { // Timeout is necessary
+        this.ToggleMobileBag()
+      }, 10);
       
       setTimeout(() => { // waiting for animation end
         this.sidenavIsOpen = false
@@ -303,6 +318,11 @@ export class HeaderComponent implements OnInit {
       }, 405);
       
     } else { // opening sidenav
+
+      setTimeout(() => { // Timeout is necessary
+        this.ToggleMobileBag()
+      }, 10);
+
       this.sidenavIsOpen = true
       this.navBarIsVisible = true
       this.mobileSearchViewIsVisible = true
