@@ -1,7 +1,7 @@
 <div class="header" #header>
     <nav class="container" [@mobileNav]="mobileSideNavAnimationState">
         <!-- ui for mobile view / only for mobile-->
-        <ul class="mobile-header" *ngIf="!mobileEditModeActivated" [@mobile-header]>
+        <ul class="mobile-header" [@edit-mode-animations]="editModeAnimationsState" #mobileHeader>
             <li class="icon">
                 <button class="btn-open-sidenav" (click)="ChangeStateSideNav(header)" >
                     <span nz-icon nzType="bars" nzTheme="outline"></span>
@@ -31,6 +31,7 @@
         <!-- ui for mobile view / only for mobile -->
         <div class="mobile-search" 
         *ngIf="mobileSearchViewIsVisible" 
+        [@edit-mode-animations]="editModeAnimationsState"
         [ngClass]="mobileEditModeActivated ? 'mobile-search-edit-mode' : ''">
             <div class="searchwrapper" (click)="EnterEditMode()">
                 <span class="search-icon" nz-icon nzType="search" nzTheme="outline"></span>
@@ -39,10 +40,15 @@
                     <span nz-icon nzType="plus-circle" nzTheme="fill" [nzRotate]="45"></span>
                 </button>
             </div>
-            <button class="btn-close-search-typing" *ngIf="mobileEditModeActivated" (click)="CloseEditMode()">Cancel</button>
+            <button class="btn-close-search-typing" 
+            *ngIf="mobileEditModeActivated"
+            [@cancel-btn]
+            (click)="CloseEditMode()">Cancel</button>
         </div>
         <!-- ui for mobile view / only for mobile -->
-        <aside class="mobile-search-results navbar" *ngIf="mobileEditModeActivated">
+        <aside class="mobile-search-results navbar" 
+        *ngIf="mobileEditModeActivated" 
+        [@search-results]>
             <section class="section">
                 <h3>QUICK LINKS</h3>
                 <ul>
@@ -58,6 +64,7 @@
         class="navbar" 
         [@navbarDesktop]="navBarDesktopAnimationState" 
         (@navbarDesktop.done)="onNavBarDesktopAnimationDone($event)" 
+        
         *ngIf="navBarIsVisible && !mobileEditModeActivated">
             <li class="apple-logo li-logo">
                 <span class="apple-icon logo" nz-icon nzType="apple" nzTheme="fill"></span>

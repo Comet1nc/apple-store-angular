@@ -239,7 +239,6 @@ button {
     background-color: black;
 }
 
-
 @media (max-width: 833px) {
     
     .navbar {
@@ -257,6 +256,7 @@ button {
         max-height: 100vh;
         height: 100vh;
         padding: 20px 40px;
+        transform: translateY(-39px);
         .section {
             width: 100%;
 
@@ -332,9 +332,6 @@ button {
         border-bottom: solid #424245 1px;
         align-items: center;
         padding-bottom: 10px;
-        &.mobile-search-edit-mode {
-            padding-top: 10px;
-        }
         .searchwrapper {
             height: 36px;
             width: 100%;

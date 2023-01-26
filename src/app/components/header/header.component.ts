@@ -216,8 +216,54 @@ import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
         // ])
       ])
     ]),
-    trigger('mobile-header', [
-      // transform: 'translateY(-39px)'
+    trigger('edit-mode-animations', [
+      state('activated', style({
+        transform: 'translateY(-39px)'
+      })),
+      state('unactive', style({
+        transform: '*'
+      })),
+      transition('unactive => activated', animate(350)),
+      transition('activated => unactive', animate(350))
+    ]),
+    trigger('search-results', [
+      transition(':enter', [
+        style({
+          transform: 'translateY(0)',
+          opacity: '0'
+        }),
+        animate(350, style({
+          transform: '*',
+          opacity: '1'
+        }))
+      ]),
+      transition(':leave', [
+        animate(350, style({
+          transform: 'translateY(0)',
+          opacity: '0'
+        }))
+      ])
+    ]),
+    trigger('cancel-btn', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+          width: '0px',
+          paddingRight: '0'
+        }),
+        animate(200, style({
+          opacity: '1',
+          width: '*',
+          paddingRight: '12px'
+        }))
+      ]),
+      transition(':leave', [
+        animate(200, style({
+          opacity: '0',
+          width: '0px',
+          paddingRight: '0'
+        }))
+      ])
     ])
   ]
 })
@@ -237,6 +283,9 @@ export class HeaderComponent implements OnInit {
   navBarDesktopAnimationState: NavBarAnimationStates = NavBarAnimationStates.visible
 
   headerRef!: HTMLDivElement;
+  mobileHeaderRef!: HTMLElement;
+
+  editModeAnimationsState: EditModeAnimationsStates = EditModeAnimationsStates.unactive
 
   bagBtn = true
   
@@ -288,12 +337,17 @@ export class HeaderComponent implements OnInit {
   }
 
   EnterEditMode() {
-    this.mobileEditModeActivated = true
-    console.log(this.headerRef)
+    setTimeout(() => {
+      this.mobileEditModeActivated = true
+    }, 10);
+    this.editModeAnimationsState = EditModeAnimationsStates.activated
   }
 
   CloseEditMode() {
-    this.mobileEditModeActivated = false
+    setTimeout(() => {
+      this.mobileEditModeActivated = false
+    }, 10);
+    this.editModeAnimationsState = EditModeAnimationsStates.unactive
   }
 
   ChangeStateSideNav(header: HTMLDivElement) {
@@ -410,7 +464,6 @@ enum NavBarAnimationStates {
   visible = 'visible',
   invisible = 'invisible'
 }
-
 enum SearchViewAnimationStates {
   visible = 'visible',
   invisible = 'invisible'
@@ -419,4 +472,8 @@ enum MobileSideNavAnimationStates {
   opened = 'opened',
   closed = 'closed',
   editMode = 'editMode'
+}
+enum EditModeAnimationsStates {
+  activated = 'activated',
+  unactive = 'unactive'
 }
