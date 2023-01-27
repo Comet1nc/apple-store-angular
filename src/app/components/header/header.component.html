@@ -8,12 +8,12 @@
                 </button>
             </li>
             <li class="li-logo">
-                <span class="apple-icon" nz-icon nzType="apple" nzTheme="fill"></span>
+                <span routerLink="/" (click)="onLinkClick()" class="apple-icon" nz-icon nzType="apple" nzTheme="fill"></span>
             </li>
-            <li class="icon li-show-cart" (click)="onMobileCartClick(contentTemplate)">
+            <li class="icon li-show-cart">
                 <!-- *ngIf="!navBarIsVisible && !sidenavIsOpen"  -->
                 <button 
-                *ngIf="bagBtn"
+                *ngIf="!navBarIsVisible && bagBtn"
                 [@mobileBag]
                 class="btn-show-cart"
                 nz-button
@@ -59,19 +59,17 @@
                 </ul>
             </section>
         </aside>
-        <!-- ui for desktop/mobile view / reponsive-->
-        <ul
-        class="navbar" 
+        <!-- ui for desktop/mobile view / responsive-->
+        <ul class="navbar" 
         [@navbarDesktop]="navBarDesktopAnimationState" 
         (@navbarDesktop.done)="onNavBarDesktopAnimationDone($event)" 
-        
         *ngIf="navBarIsVisible && !mobileEditModeActivated">
-            <li class="apple-logo li-logo">
+            <li class="apple-logo li-logo" routerLink="/" (click)="onLinkClick()">
                 <span class="apple-icon logo" nz-icon nzType="apple" nzTheme="fill"></span>
             </li>
             <li class="first-link"><a>Mac</a></li>
             <li class="fade-out scale-out-center"><a>iPad</a></li>
-            <li><a>iPhone</a></li>
+            <li routerLink="/iphone" (click)="onLinkClick()"><a>iPhone</a></li>
             <li class="last-link"><a>Watch</a></li>
             <li class="search-btn">
                 <button class="btn-show-search" (click)="ShowSearchView()">
@@ -96,8 +94,7 @@
             </li>
         </ul>
         <!-- see when search is opened / only for desktop-->
-        <aside 
-        class="searchview"
+        <aside class="searchview"
         [@searchviewDesktop]="searchViewDesktopAnimationState" 
         (@searchviewDesktop.done)="onSearchViewDesktopAnimationDone($event)"
         *ngIf="desktopSearchViewIsVisible">

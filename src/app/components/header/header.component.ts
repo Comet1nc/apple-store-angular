@@ -182,19 +182,12 @@ import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
           style({
             height: '0'
           }),
-          animate('400ms linear', style({
+          animate('400ms ease-in-out', style({
             height: '*'
           }))
         ], { optional: true}),
       ]),
       transition('opened => closed', [
-        // group([
-          // query('.navbar', [
-          //   style({
-          //     height: '*'
-          //   })
-          // ], { optional: true}),
-          
           query('.navbar', [
             style({
               height: '100vh'
@@ -213,7 +206,6 @@ import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
               paddingBottom: '0'
             }))
           ])
-        // ])
       ])
     ]),
     trigger('edit-mode-animations', [
@@ -321,19 +313,19 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  onLinkClick() {
+    if(this.sidenavIsOpen) {
+      this.ChangeStateSideNav(this.headerRef)
+    }
+    window.scroll(0, 0)
+  }
+
   ToggleMobileBag(value?: boolean) {
     if(value !== undefined) {
       this.bagBtn = value
     } else {
       this.bagBtn = !this.bagBtn
     }
-  }
-
-  onMobileCartClick(element: TemplateRef<HTMLElement>) {
-    if(!this.bagViewIsVisible) {
-      console.log(element)
-    }
-    
   }
 
   EnterEditMode() {
@@ -391,7 +383,6 @@ export class HeaderComponent implements OnInit {
 
   ChangeBagViewVisibility(state?: boolean): void {
     if(state !== undefined) {
-      console.log('state')
       this.bagViewIsVisible = state
     } else {
       this.bagViewIsVisible = !this.bagViewIsVisible;

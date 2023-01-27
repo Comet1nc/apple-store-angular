@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
-import { DbService } from './shared/db.service';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { pl_PL } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -39,7 +38,7 @@ registerLocaleData(pl);
     NzPopoverModule
     
   ],
-  providers: [DbService, { provide: NZ_I18N, useValue: pl_PL }],
+  providers: [{ provide: NZ_I18N, useValue: pl_PL }],
   bootstrap: [AppComponent],
   exports: [
   ]
