@@ -1,0 +1,210 @@
+.indentation-from-header {
+    background-color: #fff;
+    padding-top: 42px;
+}
+.bg {
+    background-color: #fff;
+}
+
+
+.watch-ultra {
+    position: relative;
+    height: 700px;
+    max-height: 706px;
+    padding-top: 50px;
+    margin-bottom: 10px;
+    background-color: #F5F5F7;
+    text-align: center;
+    a {
+        .right-icon {
+            transform: scale(0.8,0.8);
+        }
+        &:hover {
+            text-decoration-line:underline;
+        }
+    }
+    .logo {
+        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/watch/watch-component.watch-ultra-logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS93YXRjaC93YXRjaC1jb21wb25lbnQud2F0Y2gtdWx0cmEtbG9nby5wbmciLCJpYXQiOjE2NzQ5MjM5MzgsImV4cCI6MTczNzk5NTkzOH0.eJ1AZV9R3k-3zw_LNOWw9zLzd4sRCBNWsYOZPg1--CE&t=2023-01-28T16%3A38%3A58.605Z');
+        width: 107px;
+        height: 42px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        margin: 0 auto;
+    }
+    .headline {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        color: #1d1d1f;
+        font-weight: 600;
+        font-size: 40px;
+        z-index: 3;
+        letter-spacing: -2px;
+    }
+    .subhead {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        color: #1d1d1f;
+        font-weight: 600;
+        font-size: 19px;
+        padding-top: 15px;
+        z-index: 3;
+    }
+    .links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #2997ff;
+        font-weight: 400;
+        font-size: 21px;
+        letter-spacing: -1px;
+        gap: 20px;
+        margin-top: 29px;
+        z-index: 3;
+        position: relative;
+        .link-buy {
+            font-size: 17px;
+            color: white;
+            background: #0071e3;
+            border-radius: 980px;
+            padding: 8px 16px;
+            
+        }
+    }
+    .image {
+        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/watch/watch-component.watch_ultra.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS93YXRjaC93YXRjaC1jb21wb25lbnQud2F0Y2hfdWx0cmEuanBnIiwiaWF0IjoxNjc0OTIzNDY1LCJleHAiOjE3Mzc5OTU0NjV9.2BDG58Z7AzkEVchqVXNN-0g-kA_15wza3D3blyouESs&t=2023-01-28T16%3A31%3A05.712Z');
+        position: absolute;
+        bottom: 5%;
+        width: 98.6vw;
+        height: 362px;
+        max-height: 362px;
+        background-repeat: no-repeat;
+        background-size:contain;
+        background-position: center;
+    }
+}
+
+.watch-s8 {
+    position: relative;
+    height: 518px;
+    max-height: 706px;
+    background-color: black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    a {
+        .right-icon {
+            transform: scale(0.8,0.8);
+        }
+        &:hover {
+            text-decoration-line:underline;
+        }
+    }
+    .content {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        max-width: 1400px;
+        height: 706px;
+        max-height: 706px;
+        margin: 0 auto;
+    }
+    .text-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 20%;
+    }
+    .logo {
+        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/home/home-component.watch-series-8-logo.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9ob21lL2hvbWUtY29tcG9uZW50LndhdGNoLXNlcmllcy04LWxvZ28ucG5nIiwiaWF0IjoxNjc0MjM0OTk0LCJleHAiOjE3MzczMDY5OTR9.IQiCtUJ30wrvdm0Sdb3zKBeLEeyOv0IkneI7SzFArpQ&t=2023-01-20T17%3A16%3A34.576Z');
+        width: 111px;
+        height: 44px;
+        background-repeat: no-repeat;
+        background-size:contain;
+        background-position: center;
+        z-index: 3;
+        margin: 0 auto;
+    }
+    .headline {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        color: white;
+        font-weight: 600;
+        font-size: 32px;
+        z-index: 3;
+    }
+    .subhead {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        color: white;
+        font-weight: 600;
+        font-size: 17px;
+        padding-top: 15px;
+        z-index: 3;
+    }
+    .links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #06c;
+        font-weight: 400;
+        font-size: 21px;
+        letter-spacing: -1px;
+        gap: 20px;
+        margin-top: 29px;
+        z-index: 3;
+        position: relative;
+        .link-buy {
+            font-size: 17px;
+            color: white;
+            background: #0071e3;
+            border-radius: 980px;
+            padding: 8px 16px;
+            
+        }
+    }
+    .image {
+        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/watch/watch-component.watch-s8.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS93YXRjaC93YXRjaC1jb21wb25lbnQud2F0Y2gtczguanBnIiwiaWF0IjoxNjc0OTI5MTM2LCJleHAiOjE3MzgwMDExMzZ9.Kl_UR528Ci1TmbbOxeG24hfNfXcBCKqGeVMKNJd2jq0&t=2023-01-28T18%3A05%3A36.807Z');
+        position: absolute;
+        bottom: 0;
+        right: 30%;
+        width: 80%;
+        height: 100%;
+        max-height: 100%;
+        background-repeat: no-repeat;
+        background-size:contain;
+        background-position: center;
+    }
+}
+
+@media (max-width: 833px) { 
+    .watch-ultra {
+        height: 600px;
+        .image {
+            height: 254px;
+            background-size: cover;
+        }
+    }
+    .watch-s8 {
+        height: 555px;
+        .content {
+            justify-content: center;
+        }
+        .text-wrapper {
+            margin-right: 0;
+            justify-content: flex-start;
+            margin-top: 10%;
+        }
+        .image {
+            left: 0;
+            width: 100%;
+            max-height: 286px;
+            background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/watch/watch-component.watch-s8-mobile.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS93YXRjaC93YXRjaC1jb21wb25lbnQud2F0Y2gtczgtbW9iaWxlLmpwZyIsImlhdCI6MTY3NDkyOTI5MywiZXhwIjoxNzM4MDAxMjkzfQ.Z1pgADSFWLxIsQZhH2l3AT4Id3TDwXtoqNgIxx0MM2w&t=2023-01-28T18%3A08%3A13.869Z');
+        }
+    }
+}

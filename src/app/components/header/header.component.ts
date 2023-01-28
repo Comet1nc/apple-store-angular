@@ -1,6 +1,7 @@
 import { trigger, style, transition, animate, query, group, stagger, state, AnimationEvent} from '@angular/animations';
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
+import { Observable, Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -281,6 +282,12 @@ export class HeaderComponent implements OnInit {
   editModeAnimationsState: EditModeAnimationsStates = EditModeAnimationsStates.unactive
 
   bagBtn = true
+
+  // private eventSubscription!: Subscription;
+
+
+  @Output('onPageChanged') onPageChanged = new Subject<void>()
+  
   
   constructor(private breakpointObserver: BreakpointObserver) { }
   
@@ -318,6 +325,7 @@ export class HeaderComponent implements OnInit {
     if(this.sidenavIsOpen) {
       this.ChangeStateSideNav(this.headerRef)
     }
+    this.onPageChanged.next()
     window.scroll(0, 0)
   }
 

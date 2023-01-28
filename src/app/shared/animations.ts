@@ -10,4 +10,15 @@ export const fadeInOnStartTrigger = trigger('fade-in-on-start', [
     }))
     ])
 ])
+
+export const fadeOutOnStartTrigger = trigger('fade-out-on-start', [
+    transition(':leave', [
+        style({
+            opacity: '1'
+        }),
+        animate('600ms ease-out', style({
+            opacity: '0'
+        }))
+    ])
+])
     
