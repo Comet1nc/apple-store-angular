@@ -9,6 +9,7 @@
 .iphone-14-pro {
     position: relative;
     height: 730px;
+    text-align: center;
     a {
         .right-icon {
             transform: scale(0.8,0.8);
@@ -49,6 +50,7 @@
         background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/home/home-component.iphone14-pro.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9ob21lL2hvbWUtY29tcG9uZW50LmlwaG9uZTE0LXByby5qcGciLCJpYXQiOjE2NzQyMzQ4MjEsImV4cCI6MTczNzMwNjgyMX0.BNdP-qDKnJrngXMEDnTmbm36jlAv0oR-qD9WKCNF5ZY&t=2023-01-20T17%3A13%3A41.842Z');
         position: absolute;
         top: 0;
+        bottom: 100px;
         width: 98vw;
         height: 750px;
         max-width: 99.1vw;
@@ -63,6 +65,7 @@
     color: black;
     position: relative;
     height: 760px;
+    text-align: center;
     .headline {
         display: flex;
         justify-content: center;
@@ -115,6 +118,7 @@
 .watch-series-8 {
     position: relative;
     height: 750px;
+    text-align: center;
     .headline {
         display: flex;
         justify-content: center;
