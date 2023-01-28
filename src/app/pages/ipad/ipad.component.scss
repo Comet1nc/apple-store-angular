@@ -3,16 +3,18 @@
 }
 .bg {
     background-color: #fff;
-    letter-spacing: -2px;
+    
 }
-.mac-pro {
+.ipad-pro {
     position: relative;
-    height: 706px;
+    height: 518px;
     max-height: 706px;
-    padding-top: 50px;
+    // padding-top: 50px;
     margin-bottom: 10px;
     background-color: black;
     text-align: center;
+    display: flex;
+    flex-direction: column;
     a {
         .right-icon {
             transform: scale(0.8,0.8);
@@ -20,6 +22,22 @@
         &:hover {
             text-decoration-line:underline;
         }
+    }
+    .content {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 1400px;
+        height: 706px;
+        max-height: 706px;
+        margin: 0 auto;
+    }
+    .text-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 10%;
     }
     .status {
         display: flex;
@@ -32,6 +50,7 @@
         // padding: 10px 0;
     }
     .eyebrow {
+        letter-spacing: -2px;
         display: flex;
         justify-content: center;
         position: relative;
@@ -50,7 +69,7 @@
         font-weight: 600;
         font-size: 24px;
         z-index: 3;
-        
+        transform: translateX(-30px);
     }
     .subhead {
         display: flex;
@@ -84,23 +103,37 @@
         }
     }
     .image {
-        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/mac/mac.component.macbook_pro_14_16.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9tYWMvbWFjLmNvbXBvbmVudC5tYWNib29rX3Byb18xNF8xNi5qcGciLCJpYXQiOjE2NzQ4NTYwMTUsImV4cCI6MTczNzkyODAxNX0.hsnv3dUdafIdV6C5yhuYO8P6Kn7ILEwKsv2AUHMCST0&t=2023-01-27T21%3A46%3A55.133Z');
+        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/ipad/ipad-component.ipad-pro.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9pcGFkL2lwYWQtY29tcG9uZW50LmlwYWQtcHJvLmpwZyIsImlhdCI6MTY3NDkxODIyNSwiZXhwIjoxNzM3OTkwMjI1fQ.soYhgEAEureG0-73pC_9n8cNdkJ_xs4P-PR1S6SG3fg&t=2023-01-28T15%3A03%3A45.079Z');
         position: absolute;
         bottom: 0;
-        width: 100vw;
-        height: 362px;
-        max-height: 362px;
+        left: 20%;
+        width: 80%;
+        height: 100%;
+        max-height: 100%;
+        background-repeat: no-repeat;
+        background-size:contain;
+        background-position: center;
+    }
+    .image-chip {
+        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/ipad/ipad-component.m2_chip.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9pcGFkL2lwYWQtY29tcG9uZW50Lm0yX2NoaXAucG5nIiwiaWF0IjoxNjc0OTIxMzAzLCJleHAiOjE3Mzc5OTMzMDN9.PhVHXlAnmXQ2yvHV5jYml3dF4jDoW8e52rs9nyZe2zw&t=2023-01-28T15%3A55%3A03.390Z');
+        position: absolute;
+        top: -15px;
+        right: -58px;
+        height: 64px;
+        width: 64px;
         background-repeat: no-repeat;
         background-size:contain;
         background-position: center;
     }
 }
-.mac-mini {
+.ipad {
     position: relative;
-    height: 706px;
+    height: 518px;
     max-height: 706px;
-    padding-top: 50px;
+    background-color: rgb(255, 255, 255);
     text-align: center;
+    display: flex;
+    flex-direction: column;
     a {
         .right-icon {
             transform: scale(0.8,0.8);
@@ -108,6 +141,22 @@
         &:hover {
             text-decoration-line:underline;
         }
+    }
+    .content {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        max-width: 1400px;
+        height: 706px;
+        max-height: 706px;
+        margin: 0 auto;
+    }
+    .text-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 20%;
     }
     .status {
         display: flex;
@@ -120,10 +169,11 @@
         // padding: 10px 0;
     }
     .eyebrow {
+        letter-spacing: -2px;
         display: flex;
         justify-content: center;
         position: relative;
-        color: #f5f5f7;
+        color: #1d1d1f;
         font-weight: 600;
         font-size: 48px;
         padding: 10px 0;
@@ -134,17 +184,16 @@
         display: flex;
         justify-content: center;
         position: relative;
-        color: #f5f5f7;
+        color: #1d1d1f;
         font-weight: 600;
         font-size: 24px;
         z-index: 3;
-        
     }
     .subhead {
         display: flex;
         justify-content: center;
         position: relative;
-        color: white;
+        color: #1d1d1f;
         font-weight: 400;
         font-size: 17px;
         padding-top: 15px;
@@ -172,21 +221,52 @@
         }
     }
     .image {
-        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/mac/mac-component.mac_mini.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9tYWMvbWFjLWNvbXBvbmVudC5tYWNfbWluaS5qcGciLCJpYXQiOjE2NzQ4NTgzMjUsImV4cCI6MTczNzkzMDMyNX0.Q5p7_5k9iy0rX1Qrzb-pvSH31lfq56DcfDNo8HAGzY0&t=2023-01-27T22%3A25%3A25.951Z');
+        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/ipad/ipad-component.ipad.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9pcGFkL2lwYWQtY29tcG9uZW50LmlwYWQuanBnIiwiaWF0IjoxNjc0OTE4Mjc0LCJleHAiOjE3Mzc5OTAyNzR9.n6GE5fMNdFOHo5bOrG2UU5gmDOmxOKZNom0TQ-1D9Lk&t=2023-01-28T15%3A04%3A34.506Z');
         position: absolute;
-        top: 0;
-        width: 100vw;
-        height: 700px;
+        bottom: 0;
+        right: 20%;
+        width: 80%;
+        height: 100%;
+        max-height: 100%;
         background-repeat: no-repeat;
-        background-size:cover;
+        background-size:contain;
         background-position: center;
     }
 }
-
+    
+// 
 @media (max-width: 833px) { 
-    .mac-pro {
+    .ipad-pro {
+        .content {
+            justify-content: center;
+            height: 1000px;
+        }
+        .text-wrapper {
+            margin-left: 0;
+            justify-content: flex-start;
+            margin-top: 5%;
+        }
         .image {
-            background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/mac/mac.component.macbook_pro_14_16Mobile.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9tYWMvbWFjLmNvbXBvbmVudC5tYWNib29rX3Byb18xNF8xNk1vYmlsZS5qcGciLCJpYXQiOjE2NzQ4NjIxMzEsImV4cCI6MTczNzkzNDEzMX0.ykoZjKnu3w9zZ55QgyJ9v-L89WgsCzQpt8IA9tdgIDs&t=2023-01-27T23%3A28%3A51.593Z');
+            left: 0;
+            width: 100%;
+            max-height: 286px;
+        }
+    }
+    .ipad {
+        height: 612px;
+        .content {
+            justify-content: center;
+            height: 1000px;
+        }
+        .text-wrapper {
+            margin-right: 0;
+            justify-content: flex-start;
+            margin-top: 5%;
+        }
+        .image {
+            left: 0;
+            width: 100%;
+            max-height: 286px;
         }
     }
 }

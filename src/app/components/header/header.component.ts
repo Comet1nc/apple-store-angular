@@ -61,7 +61,8 @@ import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
               query('li', [
                 style({
                   opacity: '0',
-                  transform: 'translateX(50px)'
+                  transform: 'translateX(50px)',
+                  background: 'transparent'
                 }),
                 stagger('50ms ease-out', [
                   animate(250, style({
