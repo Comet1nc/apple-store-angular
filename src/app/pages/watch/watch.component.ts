@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fadeInOnStartTrigger, fadeOutOnStartTrigger } from 'src/app/shared/animations';
+import { fadeInOnStartTrigger } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-watch',

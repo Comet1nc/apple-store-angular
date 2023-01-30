@@ -12,7 +12,6 @@ import pl from '@angular/common/locales/pl';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FooterComponent } from './components/footer/footer.component';
 import { ColumnComponent } from './components/footer/column/column.component';

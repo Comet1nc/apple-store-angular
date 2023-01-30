@@ -11,7 +11,9 @@ button {
     position: fixed;
     top: 0;
     width: 100%;
+    min-height: 43px;
     font-weight: 300;
+    transition: background-color 0.5s ease;
 }
 .container {
     display: flex;
@@ -237,6 +239,7 @@ button {
 }
 .black-bg {
     background-color: black;
+    transition: background-color 0.5s ease;
 }
 
 @media (max-width: 833px) {

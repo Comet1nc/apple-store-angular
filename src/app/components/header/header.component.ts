@@ -1,7 +1,7 @@
 import { trigger, style, transition, animate, query, group, stagger, state, AnimationEvent} from '@angular/animations';
-import { Component, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -283,9 +283,6 @@ export class HeaderComponent implements OnInit {
 
   bagBtn = true
 
-  // private eventSubscription!: Subscription;
-
-
   @Output('onPageChanged') onPageChanged = new Subject<void>()
   
   
@@ -301,6 +298,7 @@ export class HeaderComponent implements OnInit {
         this.ChangeBagViewVisibility(false)
         this.CloseSearchView() 
         this.navBarIsVisible = false
+        this.ToggleMobileBag(true)
         
       } else {
         // Executes when sreen is huge
@@ -316,6 +314,7 @@ export class HeaderComponent implements OnInit {
         }
 
         this.navBarIsVisible = true
+        this.ToggleMobileBag(false)
         
       }
     });
@@ -333,7 +332,10 @@ export class HeaderComponent implements OnInit {
     if(value !== undefined) {
       this.bagBtn = value
     } else {
-      this.bagBtn = !this.bagBtn
+      setTimeout(() => {
+        this.bagBtn = !this.bagBtn
+      }, 10);
+      
     }
   }
 
@@ -353,7 +355,8 @@ export class HeaderComponent implements OnInit {
 
   ChangeStateSideNav(header: HTMLDivElement) {
 
-    this.headerRef = header
+    // saving it for future changes
+    this.headerRef = header 
 
     if(this.sidenavIsOpen) {
       
@@ -416,6 +419,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ShowSearchView() {
+    window.scroll(0,0)
     // Hide navbar
     this.ToggleDesktopNavbarAnimationState(NavBarAnimationStates.invisible)
     // Show search view
