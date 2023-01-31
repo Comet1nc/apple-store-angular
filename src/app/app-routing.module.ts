@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'mac', loadChildren: () => import('./pages/mac/mac.module').then(m => m.MacModule) },
   { path: 'ipad', loadChildren: () => import('./pages/ipad/ipad.module').then(m => m.IpadModule) },
   { path: 'watch', loadChildren: () => import('./pages/watch/watch.module').then(m => m.WatchModule) },
-  { path: 'product-configurator', loadChildren: () => import('./pages/product-configurator/product-configurator.module').then(m => m.ProductConfiguratorModule) }
+  { path: 'product-configurator', loadChildren: () => import('./pages/product-configurator/product-configurator.module').then(m => m.ProductConfiguratorModule) },
+  { path: '**', loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule) }
 ];
 
 @NgModule({

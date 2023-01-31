@@ -26,7 +26,6 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
       this.productName = params['name']
       if(this.CheckName(this.productName)) {
         // dispatch
-        console.log(this.productName)
         this.store.dispatch(new ConfActions.FetchProduct(this.productName))
       }
     })
@@ -50,7 +49,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
         return true
       default:
         console.log('Wrong route')
-        this.router.navigate([''])
+        this.router.navigate(['xyz'])
         return false
     }
   }
