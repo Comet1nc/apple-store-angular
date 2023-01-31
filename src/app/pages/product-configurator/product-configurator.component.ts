@@ -22,6 +22,24 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
   loadingData: boolean
 
   ngOnInit(): void {
+
+    this.loadingData = true
+    
+    this.subsription = this.store.select('configurator').pipe(map(confState => {
+      if(confState === undefined) {
+        console.log('Store is empty')
+        return undefined
+      }
+      return confState.product
+    })).subscribe((product) => {
+
+      if(product === undefined) return 
+
+      this.product = product
+      this.loadingData = false
+    })
+
+    
     this.route.params.subscribe(params => {
       this.productName = params['name']
       if(this.CheckName(this.productName)) {
@@ -29,9 +47,6 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
         this.store.dispatch(new ConfActions.FetchProduct(this.productName))
       }
     })
-
-
-    this.SubscribeToStore()
 
     window.scroll(0,0)
     
@@ -52,26 +67,5 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
         this.router.navigate(['xyz'])
         return false
     }
-  }
-
-  SubscribeToStore() {
-    this.loadingData = true
-
-    this.subsription = this.store.select('configurator').pipe(map(confState => {
-      return confState.product
-    }))
-    .subscribe({
-      next: (product: Product) => {
-        this.product = product
-        this.loadingData = false
-      },
-      error: (e) => {
-        console.log('store resub')
-        setTimeout(() => {
-          this.subsription.unsubscribe()
-          this.SubscribeToStore()
-        }, 100);
-      },
-    }) 
   }
 }
