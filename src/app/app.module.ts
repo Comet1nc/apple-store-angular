@@ -16,6 +16,12 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FooterComponent } from './components/footer/footer.component';
 import { ColumnComponent } from './components/footer/column/column.component';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { EffectsModule } from '@ngrx/effects';
+import * as fromApp from './store/app.reducer'
+import { StoreModule } from '@ngrx/store';
+import { ConfiguratorEffects } from './pages/product-configurator/store/configurator.effects';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 registerLocaleData(pl);
 
@@ -34,7 +40,10 @@ registerLocaleData(pl);
     HttpClientModule,
     BrowserAnimationsModule,
     NzIconModule,
-    NzPopoverModule
+    NzPopoverModule,
+    StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([ConfiguratorEffects]),
+    StoreDevtoolsModule.instrument({logOnly: environment.production}),
     
   ],
   providers: [{ provide: NZ_I18N, useValue: pl_PL }],

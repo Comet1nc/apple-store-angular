@@ -1,1 +1,6 @@
-<p>product-configurator works!</p>
+<div class="indentation-from-header"></div>
+<div class="bg">
+    <h1 *ngIf="loadingData">Loading...</h1>
+    <h1 *ngIf="!loadingData">{{ product?.name }}</h1>
+    <h2>${{ product?.priceUSD }}</h2>
+</div>

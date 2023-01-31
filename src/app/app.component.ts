@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       this.blackScreen =false
     }, 10);
+    
   }
 
   onPageChanged() {

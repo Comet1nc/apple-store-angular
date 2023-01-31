@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Product } from 'src/app/shared/configurator-product.model';
 import { fadeInOnStartTrigger } from '../../shared/animations'
+import * as fromApp from '../../store/app.reducer'
+import * as ConfActions from '../product-configurator/store/configurator.actions'
+
 
 @Component({
   selector: 'app-iphone',
@@ -11,9 +17,20 @@ import { fadeInOnStartTrigger } from '../../shared/animations'
 })
 export class IphoneComponent implements OnInit {
 
-  constructor() { }
+  // products = {
+  //   iphone14: 'iPhone 14',
+  //   iphone14pro: 'iPhone 14 Pro',
+  // }
+
+  constructor(private router: Router, private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
+    
+  }
+
+  ConfigurateProduct(name: string) {
+    
+    this.router.navigate(['product-configurator/' + name])
   }
 
 }

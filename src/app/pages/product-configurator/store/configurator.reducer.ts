@@ -11,12 +11,11 @@ const initialState: State = {
 
 export function configuratorReducer(state: State, action: ConfActions.ConfiguratorActions) {
     switch (action.type) {
-        // case ConfActions.FETCH_PRODUCT:
-        //     return {
-        //         ...state
-        //     }
-            
-    
+        case ConfActions.SET_PRODUCT:
+            return {
+                ...state,
+                product: action.payload
+            }
         default:
             return state
     }
