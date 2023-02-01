@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { headerPosition, HeaderService } from 'src/app/services/header.service';
 import { Product } from 'src/app/shared/configurator-product.model';
 import * as fromApp from '../../store/app.reducer'
 import * as ConfActions from '../product-configurator/store/configurator.actions'
@@ -14,7 +15,9 @@ import * as ConfActions from '../product-configurator/store/configurator.actions
 })
 export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
-  constructor(private store: Store<fromApp.AppState>, private route: ActivatedRoute, private router: Router,) { }
+  constructor(private store: Store<fromApp.AppState>, private route: ActivatedRoute, private router: Router,
+    private headerService: HeaderService  
+  ) { }
  
   productName: string
   product: Product
@@ -22,6 +25,9 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
   loadingData: boolean
 
   ngOnInit(): void {
+
+    
+    this.headerService.onChangeHeaderPosition.next(headerPosition.absolute)
 
     this.loadingData = true
     
@@ -54,6 +60,8 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subsription.unsubscribe()
+
+    this.headerService.onChangeHeaderPosition.next(headerPosition.fixed)
   }
 
   CheckName(name: string) {

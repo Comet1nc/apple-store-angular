@@ -1,7 +1,8 @@
 import { trigger, style, transition, animate, query, group, stagger, state, AnimationEvent} from '@angular/animations';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
 import { BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
+import { headerPosition, HeaderService } from 'src/app/services/header.service';
 
 @Component({
   selector: 'app-header',
@@ -276,7 +277,11 @@ export class HeaderComponent implements OnInit {
   navBarIsVisible: boolean = true
   navBarDesktopAnimationState: NavBarAnimationStates = NavBarAnimationStates.visible
 
-  headerRef!: HTMLDivElement;
+  headerElement: HTMLDivElement
+
+  @ViewChild('header') headerRef: ElementRef<HTMLDivElement>
+  headerAbsolutePosition: boolean = false
+
   mobileHeaderRef!: HTMLElement;
 
   editModeAnimationsState: EditModeAnimationsStates = EditModeAnimationsStates.unactive
@@ -284,11 +289,21 @@ export class HeaderComponent implements OnInit {
   bagBtn = true
 
   @Output('onPageChanged') onPageChanged = new Subject<void>()
+  @Output('onChangeBodyScroll') onChangeBodyScroll = new Subject<boolean>()
   
   
-  constructor(private breakpointObserver: BreakpointObserver) { }
-  
+  constructor(private breakpointObserver: BreakpointObserver, private headerService: HeaderService) { }
+
   ngOnInit(): void {
+
+    this.headerService.onChangeHeaderPosition.subscribe((headerPos: headerPosition) => {
+      if(headerPos === headerPosition.fixed) {
+        this.headerAbsolutePosition = false
+      } else {
+        this.headerAbsolutePosition = true
+      }
+    })
+
     this.breakpointObserver.observe([
       "(max-width: 833px)"
     ]).subscribe((result: BreakpointState) => {
@@ -308,7 +323,7 @@ export class HeaderComponent implements OnInit {
         this.CloseEditMode() 
 
         if(this.sidenavIsOpen) { // if sidenav is opened, close it
-          this.headerRef.classList.remove('black-bg')
+          this.headerElement.classList.remove('black-bg')
           this.sidenavIsOpen = false
           this.mobileSearchViewIsVisible = false
         }
@@ -322,7 +337,7 @@ export class HeaderComponent implements OnInit {
 
   onLinkClick() {
     if(this.sidenavIsOpen) {
-      this.ChangeStateSideNav(this.headerRef)
+      this.ChangeStateSideNav(this.headerElement)
     }
     this.onPageChanged.next()
     window.scroll(0, 0)
@@ -356,9 +371,12 @@ export class HeaderComponent implements OnInit {
   ChangeStateSideNav(header: HTMLDivElement) {
 
     // saving it for future changes
-    this.headerRef = header 
+    this.headerElement = header 
 
     if(this.sidenavIsOpen) {
+
+      // Prevent Scrolling
+      this.onChangeBodyScroll.next(true)
       
       // closing animation
       this.mobileSideNavAnimationState = MobileSideNavAnimationStates.closed
@@ -376,6 +394,9 @@ export class HeaderComponent implements OnInit {
       }, 405);
       
     } else { // opening sidenav
+
+      // Allow Scrolling
+      this.onChangeBodyScroll.next(false)
 
       setTimeout(() => { // Timeout is necessary
         this.ToggleMobileBag()

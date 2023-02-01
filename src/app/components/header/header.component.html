@@ -1,4 +1,4 @@
-<div class="header" #header>
+<div #header class="header" [ngClass]="{'absolutePosition' : headerAbsolutePosition}">
     <nav class="container" [@mobileNav]="mobileSideNavAnimationState">
         <!-- ui for mobile view / only for mobile-->
         <ul class="mobile-header" [@edit-mode-animations]="editModeAnimationsState" #mobileHeader>
@@ -12,7 +12,7 @@
             </li>
             <li class="icon li-show-cart">
                 <!-- *ngIf="!navBarIsVisible && !sidenavIsOpen"  -->
-                <button 
+                <button
                 *ngIf="bagBtn"
                 [@mobileBag]
                 class="btn-show-cart"
@@ -156,4 +156,3 @@
         </aside>
     </nav>
 </div>
-

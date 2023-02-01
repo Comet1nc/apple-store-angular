@@ -9,6 +9,7 @@ body {
     font-family: 'Noto Sans', sans-serif;
     line-height: 1.2;
     height: 100%;
+    
 }
 p {
     margin: 0;
@@ -34,6 +35,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 ::selection {
     background: rgba(91, 198, 255, 0.417);
+}
+
+.prevent-scroll-y {
+    overflow-y: hidden;
 }
 // body {
 //     height: 100%;

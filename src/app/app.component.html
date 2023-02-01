@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <app-header (onPageChanged)="onPageChanged()"></app-header>
+  <app-header (onChangeBodyScroll)="ChangeBodyScroll($event)" (onPageChanged)="onPageChanged()"></app-header>
   <div class="main-content">
     <div class="black-screen-on-start" *ngIf="blackScreen" [@fade-out-on-start]></div>
     <router-outlet></router-outlet>
