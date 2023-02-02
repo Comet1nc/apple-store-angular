@@ -8,6 +8,7 @@ import { Product } from 'src/app/shared/configurator-product.model';
 import * as fromApp from '../../store/app.reducer'
 import * as ConfActions from '../product-configurator/store/configurator.actions'
 
+
 @Component({
   selector: 'app-product-configurator',
   templateUrl: './product-configurator.component.html',
@@ -23,6 +24,9 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
   product: Product
   subsription: Subscription
   loadingData: boolean
+
+  nzOffsetTop = 20
+  nzOffsetBottom = false
 
   ngOnInit(): void {
 
@@ -46,6 +50,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
     })
 
     
+    
     this.route.params.subscribe(params => {
       this.productName = params['name']
       if(this.CheckName(this.productName)) {
@@ -56,6 +61,11 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy {
 
     window.scroll(0,0)
     
+  }
+
+  onAffixChange(event: any) {
+      console.log(event)
+      event
   }
 
   ngOnDestroy(): void {
