@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProductConfiguratorRoutingModule } from './product-configurator-routing.module';
 import { ProductConfiguratorComponent } from './product-configurator.component';
-
+import { NzAffixModule } from 'ng-zorro-antd/affix';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { ProductConfiguratorComponent } from './product-configurator.component';
   ],
   imports: [
     CommonModule,
-    ProductConfiguratorRoutingModule
+    ProductConfiguratorRoutingModule,
+    NzAffixModule
   ]
 })
 export class ProductConfiguratorModule { }

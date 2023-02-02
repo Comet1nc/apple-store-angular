@@ -54,7 +54,9 @@ h1, h2, h3, h4, h5, h6 {
             display: none;
         }
         .ant-popover-inner {
-            border-radius: 0px;
+            width: 100vw;
+            // height: 90vh;
+            // border-radius: 0px;
         }
         
     }

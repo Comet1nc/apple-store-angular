@@ -5,8 +5,23 @@
     background-color: #fff;
     color: black;
     padding-top: 5px;
-    height: 1000px; // temporary style
+    // height: 1000px; // temporary style
     h1, h2 {
         color: black;
     }
+}
+.space {
+    height: 1000px;
+    
+}
+.affix-container {
+    height: 1000px;
+    width: 700px;
+    background-color: blue;
+    overflow-y: scroll;
+}
+.block {
+    height: 600px;
+    width: 500px;
+    background-color: red;
 }

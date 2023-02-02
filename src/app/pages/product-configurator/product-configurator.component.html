@@ -3,4 +3,14 @@
     <h1 *ngIf="loadingData">Loading...</h1>
     <h1 *ngIf="!loadingData">{{ product?.name }}</h1>
     <h2>${{ product?.priceUSD }}</h2>
+    <div class="space"></div>
+    
+    <nz-affix  [nzOffsetTop]="nzOffsetTop" (nzChange)="onAffixChange($event)">
+        <div class="block"></div>
+    </nz-affix>
+    
+    
+    <!-- <div class="space"></div> -->
+    <div class="space"></div>
+    <div class="space"></div>
 </div>
