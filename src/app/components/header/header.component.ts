@@ -295,7 +295,6 @@ export class HeaderComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, private headerService: HeaderService) { }
 
   ngOnInit(): void {
-
     this.headerService.onChangeHeaderPosition.subscribe((headerPos: headerPosition) => {
       if(headerPos === headerPosition.fixed) {
         this.headerAbsolutePosition = false

@@ -1,16 +1,50 @@
 <div class="indentation-from-header"></div>
 <div class="bg">
-    <h1 *ngIf="loadingData">Loading...</h1>
-    <h1 *ngIf="!loadingData">{{ product?.name }}</h1>
-    <h2>${{ product?.priceUSD }}</h2>
-    <div class="space"></div>
-    
-    <nz-affix  [nzOffsetTop]="nzOffsetTop" (nzChange)="onAffixChange($event)">
-        <div class="block"></div>
-    </nz-affix>
-    
-    
-    <!-- <div class="space"></div> -->
-    <div class="space"></div>
-    <div class="space"></div>
+    <div class="bar-container" >
+        <div class="sticky-bar" *ngIf="barActive" [@sticky-bar]>
+            <div class="title">
+                <div class="container">
+                    <div class="product-name">{{ product?.name }}</div>
+                    <div class="price">From ${{ product?.priceUSD }}</div>
+                </div>
+            </div>
+            <div class="features">
+                <div class="container">
+                    <div class="delivery">
+                        <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
+                        2-hr delivery in most metros ($9)
+                    </div>
+                    <div class="shipping">
+                        <span nz-icon nzType="car" nzTheme="outline"></span>
+                        Free shipping
+                    </div>
+                    <div class="pickup">
+                        <span nz-icon nzType="shopping" nzTheme="outline"></span>
+                        Pick up from Store
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="loading-info" *ngIf="loadingData">Loading...</div>
+        <div class="header">
+            <div class="title">
+                <div class="badge">New</div>
+                <h1 *ngIf="!loadingData">Buy {{ product?.name }}</h1>
+                <div class="price">From ${{ product?.priceUSD }}</div>
+            </div>
+            <div class="right-section">
+                <div class="sales">Get 3% Daily Cash back with Apple Card <span nz-icon nzType="info-circle" nzTheme="outline"></span></div>
+            </div>
+        </div>
+        <div class="main-row">
+            <div class="left-column" #stickyBar>
+
+            </div>
+            <div class="right-column">
+
+            </div>
+        </div>
+    </div>
 </div>

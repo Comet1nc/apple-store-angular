@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProductConfiguratorRoutingModule } from './product-configurator-routing.module';
 import { ProductConfiguratorComponent } from './product-configurator.component';
-import { NzAffixModule } from 'ng-zorro-antd/affix';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { NzAffixModule } from 'ng-zorro-antd/affix';
   imports: [
     CommonModule,
     ProductConfiguratorRoutingModule,
-    NzAffixModule
+    NzIconModule
   ]
 })
 export class ProductConfiguratorModule { }
