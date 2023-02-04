@@ -6,7 +6,7 @@ export interface State {
 }
 
 const initialState: State = {
-    product: new Product('', 0)
+    product: new Product('', 0, '')
 }
 
 export function configuratorReducer(state: State, action: ConfActions.ConfiguratorActions) {

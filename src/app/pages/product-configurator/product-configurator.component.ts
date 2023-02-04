@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { trigger, style, transition, animate} from '@angular/animations';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { headerPosition, HeaderService } from 'src/app/services/header.service';
-import { Product } from 'src/app/shared/configurator-product.model';
+import { ConfigurationOption, Product } from 'src/app/shared/configurator-product.model';
 import * as fromApp from '../../store/app.reducer'
 import * as ConfActions from '../product-configurator/store/configurator.actions'
 
@@ -14,32 +14,17 @@ import * as ConfActions from '../product-configurator/store/configurator.actions
   selector: 'app-product-configurator',
   templateUrl: './product-configurator.component.html',
   styleUrls: ['./product-configurator.component.scss'],
-  animations: [
-    trigger('sticky-bar', [
-      transition(':enter', [
-        style({
-          transform: 'translateY(-200px)'
-        }),
-        animate('450ms ease-in-out', style({
-          transform: '*'
-        }))
-      ]),
-      transition(':leave', [
-        animate('350ms ease-in-out', style({
-          transform: 'translateY(-200px)'
-        }))
-      ])
-    ])
-  ]
+  
 })
 export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterViewInit {
   
-  @ViewChild('stickyBar') leftColumn: ElementRef<HTMLDivElement>
+  @ViewChild('TriggerForStickyBar') leftColumn: ElementRef<HTMLDivElement>
  
   productName: string
-  product: Product
   subsription: Subscription
   loadingData: boolean
+
+  product: Product
 
   barActive: boolean = false
 
@@ -57,12 +42,14 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
     {threshold: [1], rootMargin: '-110px 100px 500px 100px'}
   );
 
-  constructor(private store: Store<fromApp.AppState>, private route: ActivatedRoute, private router: Router,
+  constructor(
+    private store: Store<fromApp.AppState>, 
+    private route: ActivatedRoute, 
+    private router: Router,
     private headerService: HeaderService  
   ) { }
 
   ngOnInit(): void {
-
     
     this.headerService.onChangeHeaderPosition.next(headerPosition.absolute)
 
@@ -82,8 +69,6 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
       this.loadingData = false
     })
 
-    
-    
     this.route.params.subscribe(params => {
       this.productName = params['name']
       if(this.CheckName(this.productName)) {
@@ -93,17 +78,10 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
     })
 
     window.scroll(0,0)
-    
   }
   
   ngAfterViewInit(): void {
     this.onBarCollide.observe(this.leftColumn.nativeElement)
-    
-  }
-
-  onAffixChange(event: any) {
-      console.log(event)
-      event
   }
 
   ngOnDestroy(): void {
@@ -120,7 +98,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
         return true
       default:
         console.log('Wrong route')
-        this.router.navigate(['xyz'])
+        this.router.navigate(['not-found'])
         return false
     }
   }

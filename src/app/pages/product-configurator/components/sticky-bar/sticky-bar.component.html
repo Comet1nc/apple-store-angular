@@ -1,0 +1,26 @@
+<div class="bar-container" >
+    <div class="sticky-bar" *ngIf="barActive" [@sticky-bar]>
+        <div class="title">
+            <div class="container">
+                <div class="product-name">{{ product?.name }}</div>
+                <div class="price">From ${{ product?.priceUSD }}</div>
+            </div>
+        </div>
+        <div class="features">
+            <div class="container">
+                <div class="delivery">
+                    <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
+                    2-hr delivery in most metros ($9)
+                </div>
+                <div class="shipping">
+                    <span nz-icon nzType="car" nzTheme="outline"></span>
+                    Free shipping
+                </div>
+                <div class="pickup">
+                    <span nz-icon nzType="shopping" nzTheme="outline"></span>
+                    Pick up from Store
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
