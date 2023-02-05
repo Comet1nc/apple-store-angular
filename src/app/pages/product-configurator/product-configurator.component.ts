@@ -71,9 +71,9 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
 
     this.route.params.subscribe(params => {
       this.productName = params['name']
-      if(this.CheckName(this.productName)) {
-        // dispatch
-        this.store.dispatch(new ConfActions.FetchProduct(this.productName))
+      const route = this.GetRouteDestination(this.productName)
+      if(route !== '') {
+        this.store.dispatch(new ConfActions.FetchProduct({productName: this.productName, route: route}))
       }
     })
 
@@ -90,16 +90,16 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
     this.headerService.onChangeHeaderPosition.next(headerPosition.fixed)
   }
 
-  CheckName(name: string) {
+  GetRouteDestination(name: string) {
     switch (name) {
       case 'iphone-14':
-        return true
+        return 'iphones'
       case 'iphone-14-pro': 
-        return true
+        return 'iphones'
       default:
         console.log('Wrong route')
         this.router.navigate(['not-found'])
-        return false
+        return ''
     }
   }
 }

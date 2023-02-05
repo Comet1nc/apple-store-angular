@@ -15,10 +15,10 @@ export class Product {
 export class ConfigurationOption {
     public subTitle: string
     public title: string 
-    public type: string
+    public type: ConfOptionType
     public options: Option[]
 
-    constructor(subTitle: string, title: string, type: string, options?: Option[]) {
+    constructor(subTitle: string, title: string, type: ConfOptionType, options?: Option[]) {
         this.subTitle = subTitle
         this.title = title
         this.type = type
@@ -30,10 +30,16 @@ export class Option {
     public subTitle: string
     public title: string 
     public priceUSD: number
+    public color?: string
 
     constructor(subTitle: string, title: string, priceUSD: number) {
         this.subTitle = subTitle
         this.title = title
         this.priceUSD = priceUSD
     }
+}
+export enum ConfOptionType {
+    model = 'model',
+    color = 'color',
+    storage = 'storage'
 }

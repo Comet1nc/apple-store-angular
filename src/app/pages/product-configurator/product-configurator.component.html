@@ -16,10 +16,16 @@
         </div>
         <div class="main-row">
             <div class="left-column" #TriggerForStickyBar>
-
+                <div class="lf-container">
+                    <p>photo</p>
+                </div>
             </div>
             <div class="right-column">
-                
+                <app-configuration-options 
+                *ngFor="let option of product?.configurationOptions"
+                [configurationOption]="option"
+                >
+                </app-configuration-options>
             </div>
         </div>
     </div>

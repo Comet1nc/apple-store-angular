@@ -5,11 +5,15 @@ import { ProductConfiguratorRoutingModule } from './product-configurator-routing
 import { ProductConfiguratorComponent } from './product-configurator.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { StickyBarComponent } from './components/sticky-bar/sticky-bar.component';
+import { ConfigurationOptionsComponent } from './components/configuration-options/configuration-options.component';
+import { OptionComponent } from './components/configuration-options/option/option.component';
 
 @NgModule({
   declarations: [
     ProductConfiguratorComponent,
-    StickyBarComponent
+    StickyBarComponent,
+    ConfigurationOptionsComponent,
+    OptionComponent
   ],
   imports: [
     CommonModule,

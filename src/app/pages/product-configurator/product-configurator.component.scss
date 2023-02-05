@@ -6,13 +6,14 @@
     background-color: #fff;
     color: black;
     padding-top: 5px;
+    .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
 }
-.container {
-    max-width: 1300px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
+
 .header {
     display: flex;
     flex-wrap: wrap;
@@ -66,14 +67,29 @@
         max-width: 65%;
         top: 109px;
         height: 80vh;
+        padding-bottom: 40px;
         position: sticky;
-        background-color: blue;
+        // background-color: blue;
+        .lf-container {
+            background: #F5F5F7;
+            height: 100%;
+            width: 94%;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
     }
     .right-column {
+        padding: 145px 0;
         flex-basis: 35%;
-        max-width: 35%;
+        max-width: 350px;
         height: 2000px;
-        background-color: red;
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+        // background-color: red;
     }
 }
 

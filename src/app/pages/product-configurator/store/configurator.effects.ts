@@ -16,7 +16,7 @@ export class ConfiguratorEffects {
             ofType(ConfActions.FETCH_PRODUCT),
             switchMap((action: ConfActions.FetchProduct) => {
                 return this.http.get<Product[]>(
-                    `https://apple-store-779a3-default-rtdb.europe-west1.firebasedatabase.app/iphones.json?orderBy="routeName"&equalTo="${action.payload}"`
+                    `https://apple-store-779a3-default-rtdb.europe-west1.firebasedatabase.app/${action.payload.route}.json?orderBy="routeName"&equalTo="${action.payload.productName}"`
                 )
             }),
             map(products => {

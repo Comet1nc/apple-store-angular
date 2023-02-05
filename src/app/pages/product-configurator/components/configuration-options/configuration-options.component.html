@@ -1,0 +1,20 @@
+
+<div class="title-wrapper">
+    <h1>
+        <span class="title">{{ configurationOption?.title }}.&nbsp;</span>
+        <span class="sub-title">{{ configurationOption?.subTitle }}</span>
+    </h1>
+</div>
+<div class="color-name" *ngIf="configurationOption?.type === 'color'">
+    Color - {{ selectedOption?.title }}
+</div>
+<div class="option-wrapper" [ngClass]="{'color-wrapper': configurationOption?.type === 'color'}">
+    <app-option 
+    *ngFor="let option of configurationOption?.options" 
+    [option]="option"
+    [optionType]="configurationOption?.type"
+    (selectedOption)="setOption($event)"
+    [deselectEvent]="onDeselectOld.asObservable()"
+    >
+    </app-option>
+</div>

@@ -7,7 +7,7 @@ export const SET_PRODUCT = '[Configurtor-Products] Set product'
 export class FetchProduct implements Action {
     readonly type = FETCH_PRODUCT
 
-    constructor(public payload: string) {}
+    constructor(public payload: {productName: string, route: string}) {}
 }
 
 export class SetProduct implements Action {

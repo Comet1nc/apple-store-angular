@@ -1,0 +1,22 @@
+
+
+<div class="container">
+    <div *ngIf="optionType !== 'color'" class="default-type">
+        <label class="option" (click)="select()" [ngClass]="{'selected': isSelected}">
+            <div class="left-side">
+                <span class="title">{{ option?.title }}</span>
+                <span class="sub-title">{{ option?.subTitle }}</span>
+            </div>
+            <div class="right-side">
+                <span>From ${{ getPrice() }}</span>
+            </div>
+        </label>
+    </div>
+    <div  *ngIf="optionType === 'color'" class="color-type">
+        <label class="option" (click)="select()" >
+            <span class="color" [ngStyle]="{'background-color': bgColorForColorOption}" [ngClass]="{'selected': isSelected}">
+
+            </span>
+        </label>
+    </div>
+</div>
