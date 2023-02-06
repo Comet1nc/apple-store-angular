@@ -31,20 +31,17 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
     margin: 0;
 }
-::-moz-selection { /* Code for Firefox */
+
+::selection {
     background: rgba(91, 198, 255, 0.417);
 }
-::selection {
+::-moz-selection { /* Code for Firefox */
     background: rgba(91, 198, 255, 0.417);
 }
 
 .prevent-scroll-y {
     overflow-y: hidden;
 }
-// body {
-//     height: 100%;
-//     overflow-y: hidden;
-// }
 
 // image expire time 63 072 000 s
 
@@ -56,8 +53,6 @@ h1, h2, h3, h4, h5, h6 {
         }
         .ant-popover-inner {
             width: 100vw;
-            // height: 90vh;
-            // border-radius: 0px;
         }
         
     }

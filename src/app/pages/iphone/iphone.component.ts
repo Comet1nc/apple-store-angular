@@ -17,11 +17,6 @@ import * as ConfActions from '../product-configurator/store/configurator.actions
 })
 export class IphoneComponent implements OnInit {
 
-  // products = {
-  //   iphone14: 'iPhone 14',
-  //   iphone14pro: 'iPhone 14 Pro',
-  // }
-
   constructor(private router: Router, private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {

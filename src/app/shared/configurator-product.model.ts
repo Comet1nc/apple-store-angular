@@ -38,6 +38,7 @@ export class Option {
         this.priceUSD = priceUSD
     }
 }
+
 export enum ConfOptionType {
     model = 'model',
     color = 'color',

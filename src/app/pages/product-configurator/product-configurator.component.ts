@@ -5,9 +5,10 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { headerPosition, HeaderService } from 'src/app/services/header.service';
-import { ConfigurationOption, Product } from 'src/app/shared/configurator-product.model';
+import { ConfigurationOption, Option, Product } from 'src/app/shared/configurator-product.model';
 import * as fromApp from '../../store/app.reducer'
 import * as ConfActions from '../product-configurator/store/configurator.actions'
+import { ProductConfiguratorService } from './service/product-configurator.service';
 
 
 @Component({
@@ -46,7 +47,8 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
     private store: Store<fromApp.AppState>, 
     private route: ActivatedRoute, 
     private router: Router,
-    private headerService: HeaderService  
+    private headerService: HeaderService,
+    private configuratorService: ProductConfiguratorService
   ) { }
 
   ngOnInit(): void {
@@ -67,6 +69,24 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
 
       this.product = product
       this.loadingData = false
+
+      let smallestPrice: number
+
+      for (const confOption of product?.configurationOptions) {
+        if(confOption.type === 'model') {
+          for (const option of confOption?.options) {
+            if(smallestPrice === undefined) {
+              smallestPrice = +option.priceUSD
+            } else if(option.priceUSD < smallestPrice) {
+              smallestPrice = option.priceUSD
+            }
+          }
+        }
+      }
+
+      if(smallestPrice !== undefined) {
+        this.configuratorService.setDefaultPrice(smallestPrice)
+      }
     })
 
     this.route.params.subscribe(params => {

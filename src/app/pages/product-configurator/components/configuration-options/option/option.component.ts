@@ -9,15 +9,15 @@ import { ConfOptionType, Option } from 'src/app/shared/configurator-product.mode
 })
 export class OptionComponent implements OnInit, OnDestroy {
   
+  bgColorForColorOption: string
   isSelected: boolean
   onDeselectSubscription: Subscription
   @Input() option: Option
   @Input() optionType: ConfOptionType
   @Input() deselectEvent: Observable<void>
-
-  bgColorForColorOption: string
-
   @Output() selectedOption = new EventEmitter<Option>()
+
+  priceUSD: number
 
   ngOnInit(): void {
     this.onDeselectSubscription = this.deselectEvent.subscribe(() => {
@@ -25,10 +25,16 @@ export class OptionComponent implements OnInit, OnDestroy {
     })
 
     this.bgColorForColorOption = this.option?.color
+
+    this.setPrice(0)
+  }
+
+  setPrice(priceBefore: number) {
+    this.priceUSD = +this.option?.priceUSD + priceBefore
   }
 
   getPrice() {
-    return this.option?.priceUSD
+    return this.priceUSD
   }
 
   ngOnDestroy(): void {

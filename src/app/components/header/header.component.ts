@@ -374,17 +374,17 @@ export class HeaderComponent implements OnInit {
 
     if(this.sidenavIsOpen) {
 
-      // Prevent Scrolling
+      // Prevent page scrolling from user
       this.onChangeBodyScroll.next(true)
       
-      // closing animation
+      // 'closing' animation
       this.mobileSideNavAnimationState = MobileSideNavAnimationStates.closed
 
       setTimeout(() => { // Timeout is necessary
         this.ToggleMobileBag()
       }, 10);
       
-      setTimeout(() => { // waiting for animation end
+      setTimeout(() => { //  waiting until animation ends, and making some stuff
         this.sidenavIsOpen = false
         this.navBarIsVisible = false
         this.mobileSearchViewIsVisible = false
@@ -419,8 +419,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.bagViewIsVisible = !this.bagViewIsVisible;
     }
-    
-    
   }
 
   onNavBarDesktopAnimationDone(event: AnimationEvent) {
