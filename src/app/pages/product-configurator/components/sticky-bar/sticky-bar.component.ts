@@ -27,6 +27,7 @@ import { ProductConfiguratorService } from '../../service/product-configurator.s
 })
 export class StickyBarComponent implements OnInit {
   priceUSD: number
+  priceAnimation: boolean
 
   @Input() product: Product
   @Input() barActive: boolean = false
@@ -39,8 +40,23 @@ export class StickyBarComponent implements OnInit {
     })
 
     this.configuratorService.onPriceChanged.subscribe((priceUSD: number) => {
-      this.priceUSD = priceUSD
+      
+      if(this.priceUSD !== priceUSD) {
+        this.playPriceAnimation()
+      }
+
+      setTimeout(() => { // timeout used for nice transition
+        this.priceUSD = priceUSD
+      }, 750);
+      
     })
+  }
+
+  playPriceAnimation() {
+    this.priceAnimation = false
+    setTimeout(() => {
+      this.priceAnimation = true
+    }, 10);
   }
 
 }

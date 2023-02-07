@@ -12,7 +12,7 @@ export class ProductConfiguratorService {
 
   initPrice = new Subject<number>() 
   onPriceChanged = new Subject<number>()
-  setInitPriceForOptions = new BehaviorSubject<number>(0)
+  // setInitPriceForOptions = new BehaviorSubject<number>(0)
   setNewPriceForOption = new Subject<[number, string]>()
 
   price: number
@@ -20,16 +20,16 @@ export class ProductConfiguratorService {
   setDefaultPrice(priceUSD: number) {
     this.defaultModelPriceUSD = priceUSD
     this.initPrice.next(this.defaultModelPriceUSD)
-    this.changeInitPriceForOption()
+    // this.changeInitPriceForOption()
   }
 
   registerOptionsInService(configurationOption: ConfigurationOption) {
     this.configuratedOptions.push(new ConfiguratedOption(undefined, configurationOption))
   }
 
-  changeInitPriceForOption() {
-    this.setInitPriceForOptions.next(this.defaultModelPriceUSD)
-  }
+  // changeInitPriceForOption() {
+  //   this.setInitPriceForOptions.next(this.defaultModelPriceUSD)
+  // }
 
   addSelectedOption(selectedOption: Option, from: ConfigurationOption) {
     for (const option of this.configuratedOptions) {
