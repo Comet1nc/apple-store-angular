@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { ConfOptionType, Option } from 'src/app/shared/configurator-product.model';
+import { ProductConfiguratorService } from '../../../service/product-configurator.service';
 
 @Component({
   selector: 'app-option',
@@ -26,11 +27,23 @@ export class OptionComponent implements OnInit, OnDestroy {
 
     this.bgColorForColorOption = this.option?.color
 
-    this.setPrice(0)
-  }
+    this.priceUSD = +this.option?.priceUSD
 
-  setPrice(priceBefore: number) {
-    this.priceUSD = +this.option?.priceUSD + priceBefore
+
+    // for future versions
+    // Setting price
+    // this.configuratorService.setInitPriceForOptions.subscribe((cheapestModelPrice: number)=> {
+    //   // console.log('called')
+    //   if(this.optionType === ConfOptionType.model) {
+    //     this.priceUSD = +this.option?.priceUSD
+    //     return
+    //   }
+    //   if(!this.option?.hasOwnProperty('priceUSD')) return console.log('returned bcs of Nan')
+    //   console.log(this.option?.title)
+    //   this.priceUSD = cheapestModelPrice + +this.option?.priceUSD
+    //   console.log(this.priceUSD + " = " + cheapestModelPrice + " + " + this.option?.priceUSD)
+    // })
+    
   }
 
   getPrice() {

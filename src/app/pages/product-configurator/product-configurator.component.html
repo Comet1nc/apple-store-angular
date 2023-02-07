@@ -2,11 +2,10 @@
 <div class="bg">
     <app-sticky-bar [product]="product" [barActive]="barActive"></app-sticky-bar>
     <div class="container">
-        <div class="loading-info" *ngIf="loadingData">Loading...</div>
         <div class="header">
             <div class="title">
                 <div class="badge">New</div>
-                <h1 *ngIf="!loadingData">Buy {{ product?.name }}</h1>
+                <h1>Buy {{ product?.name }}</h1>
                 <!-- <div>{{ product?.configurationOptions[0]?.options[1]?.subTitle }}</div> -->
                 <div class="price">From ${{ product?.priceUSD }}</div>
             </div>

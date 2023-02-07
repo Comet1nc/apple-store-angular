@@ -6,7 +6,12 @@
                 <span class="sub-title">{{ option?.subTitle }}</span>
             </div>
             <div class="right-side">
-                <span>From ${{ getPrice() }}</span>
+                <span>
+                    <span *ngIf="optionType !== 'model'">
+                        +
+                    </span>
+                    ${{ getPrice() }}
+                </span>
             </div>
         </label>
     </div>

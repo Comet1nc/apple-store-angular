@@ -1,31 +1,34 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { AfterContentInit, Injectable } from '@angular/core';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { ConfigurationOption, Option } from 'src/app/shared/configurator-product.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductConfiguratorService  {
+export class ProductConfiguratorService {
 
   defaultModelPriceUSD: number
   configuratedOptions: ConfiguratedOption[] = []
 
-  currentModelPriceUSD: number // not used
-
   initPrice = new Subject<number>() 
   onPriceChanged = new Subject<number>()
+  setInitPriceForOptions = new BehaviorSubject<number>(0)
+  setNewPriceForOption = new Subject<[number, string]>()
 
   price: number
-
-  constructor() { }
 
   setDefaultPrice(priceUSD: number) {
     this.defaultModelPriceUSD = priceUSD
     this.initPrice.next(this.defaultModelPriceUSD)
+    this.changeInitPriceForOption()
   }
 
   registerOptionsInService(configurationOption: ConfigurationOption) {
     this.configuratedOptions.push(new ConfiguratedOption(undefined, configurationOption))
+  }
+
+  changeInitPriceForOption() {
+    this.setInitPriceForOptions.next(this.defaultModelPriceUSD)
   }
 
   addSelectedOption(selectedOption: Option, from: ConfigurationOption) {
@@ -35,10 +38,10 @@ export class ProductConfiguratorService  {
       }
     }
 
-    this.recalculatePrice()
+    this.recalculateTotalCost()
   }
 
-  recalculatePrice() {
+  recalculateTotalCost() {
     this.price = 0
     for (const option of this.configuratedOptions) {
       if(option.selectedOption !== undefined && option.selectedOption.hasOwnProperty('priceUSD')) {

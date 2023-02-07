@@ -1,11 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { headerPosition, HeaderService } from 'src/app/services/header.service';
-import { ConfigurationOption, Option, Product } from 'src/app/shared/configurator-product.model';
+import { Product } from 'src/app/shared/configurator-product.model';
 import * as fromApp from '../../store/app.reducer'
 import * as ConfActions from '../product-configurator/store/configurator.actions'
 import { ProductConfiguratorService } from './service/product-configurator.service';
@@ -23,7 +22,6 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
  
   productName: string
   subsription: Subscription
-  loadingData: boolean
 
   product: Product
 
@@ -54,8 +52,6 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
   ngOnInit(): void {
     
     this.headerService.onChangeHeaderPosition.next(headerPosition.absolute)
-
-    this.loadingData = true
     
     this.subsription = this.store.select('configurator').pipe(map(confState => {
       if(confState === undefined) {
@@ -68,7 +64,6 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
       if(product === undefined) return 
 
       this.product = product
-      this.loadingData = false
 
       let smallestPrice: number
 
@@ -86,6 +81,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
 
       if(smallestPrice !== undefined) {
         this.configuratorService.setDefaultPrice(smallestPrice)
+        // 
       }
     })
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ConfigurationOption, Option } from 'src/app/shared/configurator-product.model';
 import { ProductConfiguratorService } from '../../service/product-configurator.service';
@@ -8,12 +8,15 @@ import { ProductConfiguratorService } from '../../service/product-configurator.s
   templateUrl: './configuration-options.component.html',
   styleUrls: ['./configuration-options.component.scss']
 })
-export class ConfigurationOptionsComponent implements OnInit {
+export class ConfigurationOptionsComponent implements OnInit, AfterContentInit {
   @Input() configurationOption: ConfigurationOption
   selectedOption: Option
   onDeselectOld: Subject<void> = new Subject<void>();
 
   constructor(private configuratorService: ProductConfiguratorService) { }
+  ngAfterContentInit(): void {
+    
+  }
 
   ngOnInit(): void {
     this.configuratorService.registerOptionsInService(this.configurationOption)
