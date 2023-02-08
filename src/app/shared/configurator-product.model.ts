@@ -2,12 +2,14 @@ export class Product {
     public name: string
     public priceUSD: number
     public routeName: string
+    public imageUrl: string
     public configurationOptions: ConfigurationOption[]
     
-    constructor(name: string, priceUSD: number, routeName: string, configurationOptions?: ConfigurationOption[]) {
+    constructor(name: string, priceUSD: number, routeName: string, imageUrl: string, configurationOptions?: ConfigurationOption[]) {
         this.name = name
         this.priceUSD = priceUSD
         this.routeName = routeName
+        this.imageUrl = imageUrl
         this.configurationOptions = configurationOptions
     }
 }

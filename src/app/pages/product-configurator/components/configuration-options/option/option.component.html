@@ -3,7 +3,7 @@
         <label class="option" (click)="select()" [ngClass]="{'selected': isSelected}">
             <div class="left-side">
                 <span class="title">{{ option?.title }}</span>
-                <span class="sub-title">{{ option?.subTitle }}</span>
+                <span class="sub-title" *ngIf="option.subTitle">{{ option?.subTitle }}</span>
             </div>
             <div class="right-side">
                 <span>

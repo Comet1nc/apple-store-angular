@@ -7,13 +7,15 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { StickyBarComponent } from './components/sticky-bar/sticky-bar.component';
 import { ConfigurationOptionsComponent } from './components/configuration-options/configuration-options.component';
 import { OptionComponent } from './components/configuration-options/option/option.component';
+import { SummaryComponent } from './components/summary/summary.component';
 
 @NgModule({
   declarations: [
     ProductConfiguratorComponent,
     StickyBarComponent,
     ConfigurationOptionsComponent,
-    OptionComponent
+    OptionComponent,
+    SummaryComponent
   ],
   imports: [
     CommonModule,

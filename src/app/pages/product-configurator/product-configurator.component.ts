@@ -1,7 +1,8 @@
+import { trigger } from '@angular/animations';
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { headerPosition, HeaderService } from 'src/app/services/header.service';
 import { Product } from 'src/app/shared/configurator-product.model';
@@ -13,12 +14,13 @@ import { ProductConfiguratorService } from './service/product-configurator.servi
 @Component({
   selector: 'app-product-configurator',
   templateUrl: './product-configurator.component.html',
-  styleUrls: ['./product-configurator.component.scss'],
-  
+  styleUrls: ['./product-configurator.component.scss']
 })
 export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterViewInit {
   
   @ViewChild('TriggerForStickyBar') leftColumn: ElementRef<HTMLDivElement>
+
+  imageSrc = new BehaviorSubject<string>('')
  
   productName: string
   subsription: Subscription
@@ -55,7 +57,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
     
     this.subsription = this.store.select('configurator').pipe(map(confState => {
       if(confState === undefined) {
-        console.log('Store is empty')
+        // console.log('Store is empty')
         return undefined
       }
       return confState.product
@@ -64,6 +66,8 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
       if(product === undefined) return 
 
       this.product = product
+
+      this.imageSrc.next(product.imageUrl)
 
       let smallestPrice: number
 
@@ -93,6 +97,7 @@ export class ProductConfiguratorComponent implements OnInit, OnDestroy, AfterVie
       }
     })
 
+  
     window.scroll(0,0)
   }
   

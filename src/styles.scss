@@ -22,6 +22,10 @@ ul {
 figure {
     margin: 0;
 }
+button {
+    background-color: transparent;
+    border: none;
+}
 input {
     &:focus {
         outline: none;

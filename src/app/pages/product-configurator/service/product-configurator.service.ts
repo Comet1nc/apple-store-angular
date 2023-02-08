@@ -12,6 +12,7 @@ export class ProductConfiguratorService {
 
   initPrice = new Subject<number>() 
   onPriceChanged = new Subject<number>()
+  onAllOptionsSelected = new Subject<[boolean, ConfiguratedOption[]]>()
   // setInitPriceForOptions = new BehaviorSubject<number>(0)
   setNewPriceForOption = new Subject<[number, string]>()
 
@@ -36,9 +37,20 @@ export class ProductConfiguratorService {
       if(option.from === from) {
         option.selectedOption = selectedOption
       }
+
+     
     }
 
+    this.onAllOptionsSelected.next([this.checkIfAllOptionsSelected(), this.configuratedOptions])
+
     this.recalculateTotalCost()
+  }
+
+  checkIfAllOptionsSelected() {
+    let result = this.configuratedOptions.every(element => {
+      return element.selectedOption !== undefined
+    })
+    return result
   }
 
   recalculateTotalCost() {
@@ -53,7 +65,7 @@ export class ProductConfiguratorService {
   }
 }
 
-class ConfiguratedOption {
+export class ConfiguratedOption {
   public selectedOption: Option
   public from: ConfigurationOption
 

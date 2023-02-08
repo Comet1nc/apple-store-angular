@@ -16,7 +16,10 @@
         <div class="main-row">
             <div class="left-column" #TriggerForStickyBar>
                 <div class="lf-container">
-                    <p>photo</p>
+                    <div class="img-container">
+                        <img [src]="imageSrc | async">
+
+                    </div>
                 </div>
             </div>
             <div class="right-column">
@@ -27,5 +30,6 @@
                 </app-configuration-options>
             </div>
         </div>
+        <app-summary></app-summary>
     </div>
 </div>
