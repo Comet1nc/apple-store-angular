@@ -1,49 +1,51 @@
 <div class="summary">
-    <div class="select-wrapper">
-        <div class="select-remaining" *ngIf="!allOptionsSelected">
-            Select remaining options before continuing
-        </div>
+  <div class="select-wrapper">
+    <div class="select-remaining" *ngIf="!allOptionsSelected">
+      Select remaining options before continuing
     </div>
-    <div class="info-wrapper" *ngIf="allOptionsSelected">
-        <div class="left-side">
-            <div class="title">Your new {{ modelName }}.</div>
-            <div class="subtitle">Just the way you want it.</div>
-        </div>
-        <div class="main">
-            <div class="top-section">
-                <div class="full-product-name">{{ fullName }}</div>
-                <div class="price">${{ price }}</div>
-            </div>
-            <div class="bottom-section">
-                <div class="save-for-later-text">
-                    <div class="title">
-                        Need a moment?
-                    </div>
-                    <div class="description">
-                        Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.
-                    </div>
-                </div>
-                <button class="save-for-later-btn">
-                    <span nz-icon nzType="book" nzTheme="outline"></span> Save for later
-                </button>
-            </div>
-        </div>
-        <div class="right-side">
-            <div class="delivery-info">
-                <div class="title">
-                    <span nz-icon nzType="car" nzTheme="outline"></span>
-                    Delivery:
-                </div>
-                <div class="message">In stock <br> Free Shipping</div>
-            </div>
-            <div class="pickup-info">
-                <div class="title">
-                    <span nz-icon nzType="shopping" nzTheme="outline"></span>
-                    Pickup:
-                </div>
-                <div class="from-store">From store</div>
-            </div>
-            <button class="add-to-bag-btn">Add to Bag</button>
-        </div>
+  </div>
+  <div class="info-wrapper" *ngIf="allOptionsSelected">
+    <div class="left-side">
+      <div class="title">Your new {{ modelName }}.</div>
+      <div class="subtitle">Just the way you want it.</div>
     </div>
+    <div class="main">
+      <div class="top-section">
+        <div class="full-product-name">{{ fullName }}</div>
+        <div class="price">${{ price }}</div>
+      </div>
+      <div class="bottom-section">
+        <div class="save-for-later-text">
+          <div class="title">Need a moment?</div>
+          <div class="description">
+            Keep all your selections by saving this device to Your Saves, then
+            come back anytime and pick up right where you left off.
+          </div>
+        </div>
+        <button class="save-for-later-btn">
+          <span nz-icon nzType="book" nzTheme="outline"></span> Save for later
+        </button>
+      </div>
+    </div>
+    <div class="right-side">
+      <div class="delivery-info">
+        <div class="title">
+          <span nz-icon nzType="car" nzTheme="outline"></span>
+          Delivery:
+        </div>
+        <div class="message">
+          In stock <br />
+          Free Shipping
+        </div>
+      </div>
+      <div class="pickup-info">
+        <div class="title">
+          <span nz-icon nzType="shopping" nzTheme="outline"></span>
+          Pickup:
+        </div>
+        <div class="from-store">From store</div>
+      </div>
+      <button class="add-to-bag-btn">Add to Bag</button>
+    </div>
+  </div>
 </div>

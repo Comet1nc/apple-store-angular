@@ -15,12 +15,8 @@ import { SummaryComponent } from './components/summary/summary.component';
     StickyBarComponent,
     ConfigurationOptionsComponent,
     OptionComponent,
-    SummaryComponent
+    SummaryComponent,
   ],
-  imports: [
-    CommonModule,
-    ProductConfiguratorRoutingModule,
-    NzIconModule
-  ]
+  imports: [CommonModule, ProductConfiguratorRoutingModule, NzIconModule],
 })
-export class ProductConfiguratorModule { }
+export class ProductConfiguratorModule {}

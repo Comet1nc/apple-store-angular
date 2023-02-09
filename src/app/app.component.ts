@@ -5,24 +5,21 @@ import { fadeOutOnStartTrigger } from './shared/animations';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [
-    fadeOutOnStartTrigger
-  ]
+  animations: [fadeOutOnStartTrigger],
 })
 export class AppComponent implements OnInit {
-  
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2) {}
 
-  blackScreen = true
+  blackScreen = true;
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.blackScreen =false
+      this.blackScreen = false;
     }, 10);
   }
 
   ChangeBodyScroll(scroll: boolean) {
-    if(!scroll) {
+    if (!scroll) {
       this.renderer.addClass(document.body, 'prevent-scroll-y');
     } else {
       this.renderer.removeClass(document.body, 'prevent-scroll-y');
@@ -30,11 +27,9 @@ export class AppComponent implements OnInit {
   }
 
   onPageChanged() {
-    this.blackScreen = true
+    this.blackScreen = true;
     setTimeout(() => {
-      this.blackScreen = false
+      this.blackScreen = false;
     }, 10);
   }
-  
-  
 }

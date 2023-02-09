@@ -5,18 +5,10 @@ import { fadeInOnStartTrigger } from 'src/app/shared/animations';
   selector: 'app-watch',
   templateUrl: './watch.component.html',
   styleUrls: ['./watch.component.scss'],
-  animations: [
-    fadeInOnStartTrigger
-  ]
+  animations: [fadeInOnStartTrigger],
 })
 export class WatchComponent implements OnInit {
+  constructor() {}
 
-  
-
-  constructor() { }
-
-  ngOnInit(): void {
-    
-  }
-
+  ngOnInit(): void {}
 }

@@ -5,15 +5,8 @@ import { IpadRoutingModule } from './ipad-routing.module';
 import { IpadComponent } from './ipad.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-
 @NgModule({
-  declarations: [
-    IpadComponent
-  ],
-  imports: [
-    CommonModule,
-    IpadRoutingModule,
-    NzIconModule
-  ]
+  declarations: [IpadComponent],
+  imports: [CommonModule, IpadRoutingModule, NzIconModule],
 })
-export class IpadModule { }
+export class IpadModule {}

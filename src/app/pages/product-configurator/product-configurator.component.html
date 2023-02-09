@@ -1,35 +1,37 @@
 <div class="indentation-from-header"></div>
 <div class="bg">
-    <app-sticky-bar [product]="product" [barActive]="barActive"></app-sticky-bar>
-    <div class="container">
-        <div class="header">
-            <div class="title">
-                <div class="badge">New</div>
-                <h1>Buy {{ product?.name }}</h1>
-                <!-- <div>{{ product?.configurationOptions[0]?.options[1]?.subTitle }}</div> -->
-                <div class="price">From ${{ product?.priceUSD }}</div>
-            </div>
-            <div class="right-section">
-                <div class="sales">Get 3% Daily Cash back with Apple Card <span nz-icon nzType="info-circle" nzTheme="outline"></span></div>
-            </div>
+  <app-sticky-bar [product]="product" [barActive]="barActive"></app-sticky-bar>
+  <div class="container">
+    <div class="header">
+      <div class="title">
+        <div class="badge">New</div>
+        <h1>Buy {{ product?.name }}</h1>
+        <!-- <div>{{ product?.configurationOptions[0]?.options[1]?.subTitle }}</div> -->
+        <div class="price">From ${{ product?.priceUSD }}</div>
+      </div>
+      <div class="right-section">
+        <div class="sales">
+          Get 3% Daily Cash back with Apple Card
+          <span nz-icon nzType="info-circle" nzTheme="outline"></span>
         </div>
-        <div class="main-row">
-            <div class="left-column" #TriggerForStickyBar>
-                <div class="lf-container">
-                    <div class="img-container">
-                        <img [src]="imageSrc | async">
-
-                    </div>
-                </div>
-            </div>
-            <div class="right-column">
-                <app-configuration-options 
-                *ngFor="let option of product?.configurationOptions"
-                [configurationOption]="option"
-                >
-                </app-configuration-options>
-            </div>
-        </div>
-        <app-summary></app-summary>
+      </div>
     </div>
+    <div class="main-row">
+      <div class="left-column" #TriggerForStickyBar>
+        <div class="lf-container">
+          <div class="img-container">
+            <img [src]="imageSrc | async" />
+          </div>
+        </div>
+      </div>
+      <div class="right-column">
+        <app-configuration-options
+          *ngFor="let option of product?.configurationOptions"
+          [configurationOption]="option"
+        >
+        </app-configuration-options>
+      </div>
+    </div>
+    <app-summary></app-summary>
+  </div>
 </div>

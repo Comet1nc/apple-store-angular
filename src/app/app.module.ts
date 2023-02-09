@@ -17,7 +17,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ColumnComponent } from './components/footer/column/column.component';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromApp from './store/app.reducer'
+import * as fromApp from './store/app.reducer';
 import { StoreModule } from '@ngrx/store';
 import { ConfiguratorEffects } from './pages/product-configurator/store/configurator.effects';
 import { environment } from 'src/environments/environment';
@@ -31,7 +31,7 @@ registerLocaleData(pl);
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    ColumnComponent
+    ColumnComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,12 +43,10 @@ registerLocaleData(pl);
     NzPopoverModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([ConfiguratorEffects]),
-    StoreDevtoolsModule.instrument({logOnly: environment.production}),
-    
+    StoreDevtoolsModule.instrument({ logOnly: environment.production }),
   ],
   providers: [{ provide: NZ_I18N, useValue: pl_PL }],
   bootstrap: [AppComponent],
-  exports: [
-  ]
+  exports: [],
 })
-export class AppModule { }
+export class AppModule {}

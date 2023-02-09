@@ -1,38 +1,36 @@
 nav {
-    background-color: #F5F5F7;
-    padding: 35px 0;
-    letter-spacing: -1px;
-    
+  background-color: #f5f5f7;
+  padding: 35px 0;
+  letter-spacing: -1px;
 }
 .nav-wrapper {
-    margin: 0 auto;
-    max-width: 580px;
+  margin: 0 auto;
+  max-width: 580px;
 }
 .columns-wrapper {
-    display: flex;
-    gap: 50px;
-    
+  display: flex;
+  gap: 50px;
 }
 hr {
-    background-color: lightgray;
-    border: none;
-    height: 1px;
-    width: 100%;
-    margin: 3vh 0;
+  background-color: lightgray;
+  border: none;
+  height: 1px;
+  width: 100%;
+  margin: 3vh 0;
 }
 .cypyright {
-    color: #737378;
+  color: #737378;
 }
 
 @media (max-width: 833px) {
-    hr {
-        background-color:transparent;
-        margin: 1vh 0;
-    }
-    .columns-wrapper {
-        display: block;
-    }
-    .cypyright {
-        padding: 0 10px;
-    }
+  hr {
+    background-color: transparent;
+    margin: 1vh 0;
+  }
+  .columns-wrapper {
+    display: block;
+  }
+  .cypyright {
+    padding: 0 10px;
+  }
 }

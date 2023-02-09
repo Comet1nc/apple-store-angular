@@ -2,18 +2,15 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HeaderService {
+  onChangeHeaderPosition = new Subject<headerPosition>();
 
-  onChangeHeaderPosition = new Subject<headerPosition>()
-
-  constructor() { }
-
-  
+  constructor() {}
 }
 
 export enum headerPosition {
   fixed = 'fixed',
-  absolute = 'absolute'
+  absolute = 'absolute',
 }

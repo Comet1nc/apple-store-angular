@@ -1,34 +1,42 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { ConfOptionType, Option } from 'src/app/shared/configurator-product.model';
+import {
+  ConfOptionType,
+  Option,
+} from 'src/app/shared/configurator-product.model';
 import { ProductConfiguratorService } from '../../../service/product-configurator.service';
 
 @Component({
   selector: 'app-option',
   templateUrl: './option.component.html',
-  styleUrls: ['./option.component.scss']
+  styleUrls: ['./option.component.scss'],
 })
 export class OptionComponent implements OnInit, OnDestroy {
-  
-  bgColorForColorOption: string
-  isSelected: boolean
-  onDeselectSubscription: Subscription
-  @Input() option: Option
-  @Input() optionType: ConfOptionType
-  @Input() deselectEvent: Observable<void>
-  @Output() selectedOption = new EventEmitter<Option>()
+  bgColorForColorOption: string;
+  isSelected: boolean;
+  onDeselectSubscription: Subscription;
+  @Input() option: Option;
+  @Input() optionType: ConfOptionType;
+  @Input() deselectEvent: Observable<void>;
+  @Output() selectedOption = new EventEmitter<Option>();
 
-  priceUSD: number
+  priceUSD: number;
 
   ngOnInit(): void {
     this.onDeselectSubscription = this.deselectEvent.subscribe(() => {
-      this.clearSelection()
-    })
+      this.clearSelection();
+    });
 
-    this.bgColorForColorOption = this.option?.color
+    this.bgColorForColorOption = this.option?.color;
 
-    this.priceUSD = +this.option?.priceUSD
-
+    this.priceUSD = +this.option?.priceUSD;
 
     // for future versions
     // Setting price
@@ -43,25 +51,22 @@ export class OptionComponent implements OnInit, OnDestroy {
     //   this.priceUSD = cheapestModelPrice + +this.option?.priceUSD
     //   console.log(this.priceUSD + " = " + cheapestModelPrice + " + " + this.option?.priceUSD)
     // })
-    
   }
 
   getPrice() {
-    return this.priceUSD
+    return this.priceUSD;
   }
 
   ngOnDestroy(): void {
-    this.onDeselectSubscription.unsubscribe()
+    this.onDeselectSubscription.unsubscribe();
   }
-  
+
   select() {
-    this.selectedOption.emit(this.option)
-    this.isSelected = true
+    this.selectedOption.emit(this.option);
+    this.isSelected = true;
   }
 
   clearSelection() {
-    this.isSelected = false
+    this.isSelected = false;
   }
 }
-
-

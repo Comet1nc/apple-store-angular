@@ -1,271 +1,266 @@
 .indentation-from-header {
-    margin-top: 42px;
+  margin-top: 42px;
 }
 .bg {
-    background-color: #fff;
-    
+  background-color: #fff;
 }
 .ipad-pro {
+  position: relative;
+  height: 518px;
+  max-height: 706px;
+  // padding-top: 50px;
+  margin-bottom: 10px;
+  background-color: black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  a {
+    .right-icon {
+      transform: scale(0.8, 0.8);
+    }
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+  .content {
     position: relative;
-    height: 518px;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    height: 706px;
     max-height: 706px;
-    // padding-top: 50px;
-    margin-bottom: 10px;
-    background-color: black;
-    text-align: center;
+    margin: 0 auto;
+  }
+  .text-wrapper {
     display: flex;
     flex-direction: column;
-    a {
-        .right-icon {
-            transform: scale(0.8,0.8);
-        }
-        &:hover {
-            text-decoration-line:underline;
-        }
+    justify-content: center;
+    margin-left: 10%;
+  }
+  .status {
+    display: flex;
+    justify-content: center;
+    color: #f56300;
+    font-size: 17px;
+    z-index: 3;
+    position: relative;
+    font-weight: 600;
+    // padding: 10px 0;
+  }
+  .eyebrow {
+    letter-spacing: -2px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    color: #f5f5f7;
+    font-weight: 600;
+    font-size: 48px;
+    padding: 10px 0;
+    z-index: 3;
+  }
+  .headline {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    color: #f5f5f7;
+    font-weight: 600;
+    font-size: 24px;
+    z-index: 3;
+    transform: translateX(-30px);
+  }
+  .subhead {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    color: white;
+    font-weight: 400;
+    font-size: 17px;
+    padding-top: 15px;
+    z-index: 3;
+  }
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2997ff;
+    font-weight: 400;
+    font-size: 21px;
+    letter-spacing: -1px;
+    gap: 20px;
+    margin-top: 29px;
+    z-index: 3;
+    position: relative;
+    .link-buy {
+      font-size: 17px;
+      color: white;
+      background: #0071e3;
+      border-radius: 980px;
+      padding: 8px 16px;
     }
-    .content {
-        position: relative;
-        display: flex;
-        justify-content: flex-start;
-        width: 100%;
-        max-width: 1400px;
-        height: 706px;
-        max-height: 706px;
-        margin: 0 auto;
-    }
-    .text-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-left: 10%;
-    }
-    .status {
-        display: flex;
-        justify-content: center;
-        color: #f56300;
-        font-size: 17px;
-        z-index: 3;
-        position: relative;
-        font-weight: 600;
-        // padding: 10px 0;
-    }
-    .eyebrow {
-        letter-spacing: -2px;
-        display: flex;
-        justify-content: center;
-        position: relative;
-        color: #f5f5f7;
-        font-weight: 600;
-        font-size: 48px;
-        padding: 10px 0;
-        z-index: 3;
-        
-    }
-    .headline {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        color: #f5f5f7;
-        font-weight: 600;
-        font-size: 24px;
-        z-index: 3;
-        transform: translateX(-30px);
-    }
-    .subhead {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        color: white;
-        font-weight: 400;
-        font-size: 17px;
-        padding-top: 15px;
-        z-index: 3;
-    }
-    .links {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #2997ff;
-        font-weight: 400;
-        font-size: 21px;
-        letter-spacing: -1px;
-        gap: 20px;
-        margin-top: 29px;
-        z-index: 3;
-        position: relative;
-        .link-buy {
-            font-size: 17px;
-            color: white;
-            background: #0071e3;
-            border-radius: 980px;
-            padding: 8px 16px;
-            
-        }
-    }
-    .image {
-        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/ipad/ipad-component.ipad-pro.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9pcGFkL2lwYWQtY29tcG9uZW50LmlwYWQtcHJvLmpwZyIsImlhdCI6MTY3NDkxODIyNSwiZXhwIjoxNzM3OTkwMjI1fQ.soYhgEAEureG0-73pC_9n8cNdkJ_xs4P-PR1S6SG3fg&t=2023-01-28T15%3A03%3A45.079Z');
-        position: absolute;
-        bottom: 0;
-        left: 20%;
-        width: 80%;
-        height: 100%;
-        max-height: 100%;
-        background-repeat: no-repeat;
-        background-size:contain;
-        background-position: center;
-    }
-    .image-chip {
-        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/ipad/ipad-component.m2_chip.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9pcGFkL2lwYWQtY29tcG9uZW50Lm0yX2NoaXAucG5nIiwiaWF0IjoxNjc0OTIxMzAzLCJleHAiOjE3Mzc5OTMzMDN9.PhVHXlAnmXQ2yvHV5jYml3dF4jDoW8e52rs9nyZe2zw&t=2023-01-28T15%3A55%3A03.390Z');
-        position: absolute;
-        top: -15px;
-        right: -58px;
-        height: 64px;
-        width: 64px;
-        background-repeat: no-repeat;
-        background-size:contain;
-        background-position: center;
-    }
+  }
+  .image {
+    background-image: url("https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/ipad/ipad-component.ipad-pro.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9pcGFkL2lwYWQtY29tcG9uZW50LmlwYWQtcHJvLmpwZyIsImlhdCI6MTY3NDkxODIyNSwiZXhwIjoxNzM3OTkwMjI1fQ.soYhgEAEureG0-73pC_9n8cNdkJ_xs4P-PR1S6SG3fg&t=2023-01-28T15%3A03%3A45.079Z");
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 80%;
+    height: 100%;
+    max-height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .image-chip {
+    background-image: url("https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/ipad/ipad-component.m2_chip.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9pcGFkL2lwYWQtY29tcG9uZW50Lm0yX2NoaXAucG5nIiwiaWF0IjoxNjc0OTIxMzAzLCJleHAiOjE3Mzc5OTMzMDN9.PhVHXlAnmXQ2yvHV5jYml3dF4jDoW8e52rs9nyZe2zw&t=2023-01-28T15%3A55%3A03.390Z");
+    position: absolute;
+    top: -15px;
+    right: -58px;
+    height: 64px;
+    width: 64px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
 }
 .ipad {
+  position: relative;
+  height: 518px;
+  max-height: 706px;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  a {
+    .right-icon {
+      transform: scale(0.8, 0.8);
+    }
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+  .content {
     position: relative;
-    height: 518px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 1400px;
+    height: 706px;
     max-height: 706px;
-    background-color: rgb(255, 255, 255);
-    text-align: center;
+    margin: 0 auto;
+  }
+  .text-wrapper {
     display: flex;
     flex-direction: column;
-    a {
-        .right-icon {
-            transform: scale(0.8,0.8);
-        }
-        &:hover {
-            text-decoration-line:underline;
-        }
+    justify-content: center;
+    margin-right: 20%;
+  }
+  .status {
+    display: flex;
+    justify-content: center;
+    color: #f56300;
+    font-size: 17px;
+    z-index: 3;
+    position: relative;
+    font-weight: 600;
+  }
+  .eyebrow {
+    letter-spacing: -2px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    color: #1d1d1f;
+    font-weight: 600;
+    font-size: 48px;
+    padding: 10px 0;
+    z-index: 3;
+  }
+  .headline {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    color: #1d1d1f;
+    font-weight: 600;
+    font-size: 24px;
+    z-index: 3;
+  }
+  .subhead {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    color: #1d1d1f;
+    font-weight: 400;
+    font-size: 17px;
+    padding-top: 15px;
+    z-index: 3;
+  }
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2997ff;
+    font-weight: 400;
+    font-size: 21px;
+    letter-spacing: -1px;
+    gap: 20px;
+    margin-top: 29px;
+    z-index: 3;
+    position: relative;
+    .link-buy {
+      font-size: 17px;
+      color: white;
+      background: #0071e3;
+      border-radius: 980px;
+      padding: 8px 16px;
     }
+  }
+  .image {
+    background-image: url("https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/ipad/ipad-component.ipad.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9pcGFkL2lwYWQtY29tcG9uZW50LmlwYWQuanBnIiwiaWF0IjoxNjc0OTE4Mjc0LCJleHAiOjE3Mzc5OTAyNzR9.n6GE5fMNdFOHo5bOrG2UU5gmDOmxOKZNom0TQ-1D9Lk&t=2023-01-28T15%3A04%3A34.506Z");
+    position: absolute;
+    bottom: 0;
+    right: 20%;
+    width: 80%;
+    height: 100%;
+    max-height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+}
+
+//
+@media (max-width: 833px) {
+  .ipad-pro {
     .content {
-        position: relative;
-        display: flex;
-        justify-content: flex-end;
-        width: 100%;
-        max-width: 1400px;
-        height: 706px;
-        max-height: 706px;
-        margin: 0 auto;
+      justify-content: center;
+      height: 1000px;
     }
     .text-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-right: 20%;
-    }
-    .status {
-        display: flex;
-        justify-content: center;
-        color: #f56300;
-        font-size: 17px;
-        z-index: 3;
-        position: relative;
-        font-weight: 600;
-    }
-    .eyebrow {
-        letter-spacing: -2px;
-        display: flex;
-        justify-content: center;
-        position: relative;
-        color: #1d1d1f;
-        font-weight: 600;
-        font-size: 48px;
-        padding: 10px 0;
-        z-index: 3;
-        
-    }
-    .headline {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        color: #1d1d1f;
-        font-weight: 600;
-        font-size: 24px;
-        z-index: 3;
-    }
-    .subhead {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        color: #1d1d1f;
-        font-weight: 400;
-        font-size: 17px;
-        padding-top: 15px;
-        z-index: 3;
-    }
-    .links {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #2997ff;
-        font-weight: 400;
-        font-size: 21px;
-        letter-spacing: -1px;
-        gap: 20px;
-        margin-top: 29px;
-        z-index: 3;
-        position: relative;
-        .link-buy {
-            font-size: 17px;
-            color: white;
-            background: #0071e3;
-            border-radius: 980px;
-            padding: 8px 16px;
-            
-        }
+      margin-left: 0;
+      justify-content: flex-start;
+      margin-top: 5%;
     }
     .image {
-        background-image: url('https://eeigbpnwppglujxeybsb.supabase.co/storage/v1/object/sign/apple-store/ipad/ipad-component.ipad.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhcHBsZS1zdG9yZS9pcGFkL2lwYWQtY29tcG9uZW50LmlwYWQuanBnIiwiaWF0IjoxNjc0OTE4Mjc0LCJleHAiOjE3Mzc5OTAyNzR9.n6GE5fMNdFOHo5bOrG2UU5gmDOmxOKZNom0TQ-1D9Lk&t=2023-01-28T15%3A04%3A34.506Z');
-        position: absolute;
-        bottom: 0;
-        right: 20%;
-        width: 80%;
-        height: 100%;
-        max-height: 100%;
-        background-repeat: no-repeat;
-        background-size:contain;
-        background-position: center;
+      left: 0;
+      width: 100%;
+      max-height: 286px;
     }
-}
-    
-// 
-@media (max-width: 833px) { 
-    .ipad-pro {
-        .content {
-            justify-content: center;
-            height: 1000px;
-        }
-        .text-wrapper {
-            margin-left: 0;
-            justify-content: flex-start;
-            margin-top: 5%;
-        }
-        .image {
-            left: 0;
-            width: 100%;
-            max-height: 286px;
-        }
+  }
+  .ipad {
+    height: 612px;
+    .content {
+      justify-content: center;
+      height: 1000px;
     }
-    .ipad {
-        height: 612px;
-        .content {
-            justify-content: center;
-            height: 1000px;
-        }
-        .text-wrapper {
-            margin-right: 0;
-            justify-content: flex-start;
-            margin-top: 5%;
-        }
-        .image {
-            left: 0;
-            width: 100%;
-            max-height: 286px;
-        }
+    .text-wrapper {
+      margin-right: 0;
+      justify-content: flex-start;
+      margin-top: 5%;
     }
+    .image {
+      left: 0;
+      width: 100%;
+      max-height: 286px;
+    }
+  }
 }

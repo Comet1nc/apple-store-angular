@@ -5,15 +5,10 @@ import { fadeInOnStartTrigger } from 'src/app/shared/animations';
   selector: 'app-ipad',
   templateUrl: './ipad.component.html',
   styleUrls: ['./ipad.component.scss'],
-  animations: [
-    fadeInOnStartTrigger
-  ]
+  animations: [fadeInOnStartTrigger],
 })
 export class IpadComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

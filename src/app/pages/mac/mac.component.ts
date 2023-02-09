@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { fadeInOnStartTrigger } from '../../shared/animations'
+import { fadeInOnStartTrigger } from '../../shared/animations';
 
 @Component({
   selector: 'app-mac',
   templateUrl: './mac.component.html',
   styleUrls: ['./mac.component.scss'],
-  animations: [
-    fadeInOnStartTrigger
-  ]
+  animations: [fadeInOnStartTrigger],
 })
 export class MacComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

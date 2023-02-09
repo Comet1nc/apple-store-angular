@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: WatchComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class WatchRoutingModule { }
+export class WatchRoutingModule {}

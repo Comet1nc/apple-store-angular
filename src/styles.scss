@@ -1,63 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
 
 html {
-    height: 100%;
+  height: 100%;
 }
 body {
-    margin: 0;
-    color: rgb(179,179,179);
-    font-family: 'Noto Sans', sans-serif;
-    line-height: 1.2;
-    height: 100%;
-    
+  margin: 0;
+  color: rgb(179, 179, 179);
+  font-family: "Noto Sans", sans-serif;
+  line-height: 1.2;
+  height: 100%;
 }
 p {
-    margin: 0;
+  margin: 0;
 }
 ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
 }
 figure {
-    margin: 0;
+  margin: 0;
 }
 button {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 input {
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
-h1, h2, h3, h4, h5, h6 {
-    color: white;
-    margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+  margin: 0;
 }
 
 ::selection {
-    background: rgba(91, 198, 255, 0.417);
+  background: rgba(91, 198, 255, 0.417);
 }
-::-moz-selection { /* Code for Firefox */
-    background: rgba(91, 198, 255, 0.417);
+::-moz-selection {
+  /* Code for Firefox */
+  background: rgba(91, 198, 255, 0.417);
 }
 
 .prevent-scroll-y {
-    overflow-y: hidden;
+  overflow-y: hidden;
 }
 
 // image expire time 63 072 000 s
 
 // poor ui library makes me overwrite styles here :(
-@media (max-width: 833px) { 
-    .bagview-popover {
-        .ant-popover-arrow {
-            display: none;
-        }
-        .ant-popover-inner {
-            width: 100vw;
-        }
-        
+@media (max-width: 833px) {
+  .bagview-popover {
+    .ant-popover-arrow {
+      display: none;
     }
+    .ant-popover-inner {
+      width: 100vw;
+    }
+  }
 }

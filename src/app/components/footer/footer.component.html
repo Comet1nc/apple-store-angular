@@ -1,10 +1,14 @@
 <nav>
-    <div class="nav-wrapper">
-        <div class="columns-wrapper" #columnsWrapper>
-            <app-column *ngFor="let column of columnsData" [myColumnData]="column"></app-column>
-        </div> 
-        <hr>
-        <div class="cypyright">Copyright © 2023 Apple Inc. All rights reserved.</div>
+  <div class="nav-wrapper">
+    <div class="columns-wrapper" #columnsWrapper>
+      <app-column
+        *ngFor="let column of columnsData"
+        [myColumnData]="column"
+      ></app-column>
     </div>
+    <hr />
+    <div class="cypyright">
+      Copyright © 2023 Apple Inc. All rights reserved.
+    </div>
+  </div>
 </nav>
-

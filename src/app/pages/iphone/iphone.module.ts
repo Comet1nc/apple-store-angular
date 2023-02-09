@@ -5,15 +5,8 @@ import { IphoneRoutingModule } from './iphone-routing.module';
 import { IphoneComponent } from './iphone.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-
 @NgModule({
-  declarations: [
-    IphoneComponent
-  ],
-  imports: [
-    CommonModule,
-    IphoneRoutingModule,
-    NzIconModule,
-  ]
+  declarations: [IphoneComponent],
+  imports: [CommonModule, IphoneRoutingModule, NzIconModule],
 })
-export class IphoneModule { }
+export class IphoneModule {}

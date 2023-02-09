@@ -1,28 +1,28 @@
 .title-wrapper {
-    display: flex;
-    margin-bottom: 5px;
-    padding: 10px 0;
-    .title {
-        color: black;
-        font-weight: 600;
-        font-size: 24px;
-    }
-    .sub-title {
-        color: #86868B;
-        font-weight: 600;
-        font-size: 24px;
-    }
+  display: flex;
+  margin-bottom: 5px;
+  padding: 10px 0;
+  .title {
+    color: black;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  .sub-title {
+    color: #86868b;
+    font-weight: 600;
+    font-size: 24px;
+  }
 }
 .color-name {
-    font-weight: 600;
-    font-size: 17px;
-    color: #1d1d1f;
+  font-weight: 600;
+  font-size: 17px;
+  color: #1d1d1f;
 }
 .option-wrapper {
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
 }
 .option-wrapper.color-wrapper {
-    flex-direction: row;
+  flex-direction: row;
 }
