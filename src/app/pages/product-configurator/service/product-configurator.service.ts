@@ -1,5 +1,5 @@
-import { AfterContentInit, Injectable } from '@angular/core';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import {
   ConfigurationOption,
   Option,
@@ -20,6 +20,12 @@ export class ProductConfiguratorService {
 
   price: number;
 
+  clearService() {
+    this.price = 0;
+    this.configuratedOptions = [];
+    this.defaultModelPriceUSD = 0;
+  }
+
   setDefaultPrice(priceUSD: number) {
     this.defaultModelPriceUSD = priceUSD;
     this.initPrice.next(this.defaultModelPriceUSD);
@@ -30,6 +36,10 @@ export class ProductConfiguratorService {
     this.configuratedOptions.push(
       new ConfiguratedOption(undefined, configurationOption)
     );
+  }
+
+  unregisterOptionsInService(configurationOption: ConfigurationOption) {
+    this.configuratedOptions = [];
   }
 
   // changeInitPriceForOption() {
@@ -48,6 +58,8 @@ export class ProductConfiguratorService {
       this.configuratedOptions,
     ]);
 
+    console.log(this.configuratedOptions);
+
     this.recalculateTotalCost();
   }
 
@@ -55,6 +67,7 @@ export class ProductConfiguratorService {
     let result = this.configuratedOptions.every((element) => {
       return element.selectedOption !== undefined;
     });
+    console.log(result);
     return result;
   }
 

@@ -61,6 +61,9 @@ export class ProductConfiguratorComponent
   ngOnInit(): void {
     this.headerService.onChangeHeaderPosition.next(headerPosition.absolute);
 
+    this.configuratorService.configuratedOptions = [];
+    console.log(this.configuratorService.configuratedOptions);
+
     this.subsription = this.store
       .select('configurator')
       .pipe(
@@ -123,6 +126,8 @@ export class ProductConfiguratorComponent
     this.subsription.unsubscribe();
 
     this.headerService.onChangeHeaderPosition.next(headerPosition.fixed);
+
+    //
   }
 
   GetRouteDestination(name: string) {
@@ -131,6 +136,18 @@ export class ProductConfiguratorComponent
         return 'iphones';
       case 'iphone-14-pro':
         return 'iphones';
+      case 'ipad-pro':
+        return 'ipads';
+      case 'ipad':
+        return 'ipads';
+      case 'mac-mini':
+        return 'macs';
+      case 'macbook-pro':
+        return 'macs';
+      case 'watch-s8':
+        return 'watches';
+      case 'watch-ultra':
+        return 'watches';
       default:
         console.log('Wrong route');
         this.router.navigate(['not-found']);

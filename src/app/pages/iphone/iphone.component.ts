@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { Product } from 'src/app/shared/configurator-product.model';
+import { Router } from '@angular/router';
 import { fadeInOnStartTrigger } from '../../shared/animations';
-import * as fromApp from '../../store/app.reducer';
-import * as ConfActions from '../product-configurator/store/configurator.actions';
 
 @Component({
   selector: 'app-iphone',
@@ -13,7 +9,7 @@ import * as ConfActions from '../product-configurator/store/configurator.actions
   animations: [fadeInOnStartTrigger],
 })
 export class IphoneComponent implements OnInit {
-  constructor(private router: Router, private store: Store<fromApp.AppState>) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 

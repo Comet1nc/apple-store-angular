@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { fadeInOnStartTrigger } from '../../shared/animations';
 
 @Component({
@@ -8,7 +9,11 @@ import { fadeInOnStartTrigger } from '../../shared/animations';
   animations: [fadeInOnStartTrigger],
 })
 export class MacComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  ConfigurateProduct(name: string) {
+    this.router.navigate(['product-configurator/' + name]);
+  }
 }
