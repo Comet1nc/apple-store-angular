@@ -126,6 +126,33 @@
   }
 }
 
+@media (max-width: 833px) {
+  .header {
+    .title {
+      h1 {
+        font-size: 40px;
+      }
+    }
+  }
+
+  .main-row {
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+
+    .left-column {
+      flex-basis: auto;
+      max-width: 90vw;
+      position: relative;
+      top: 0px;
+    }
+
+    .right-column {
+      padding-top: 60px;
+    }
+  }
+}
+
 // sticky
 
 // .wrapper {

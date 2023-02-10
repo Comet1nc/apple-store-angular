@@ -13,7 +13,7 @@ import {
 import { ProductConfiguratorService } from '../../service/product-configurator.service';
 
 @Component({
-  selector: 'app-configuration-options',
+  selector: 'configuration-options',
   templateUrl: './configuration-options.component.html',
   styleUrls: ['./configuration-options.component.scss'],
 })

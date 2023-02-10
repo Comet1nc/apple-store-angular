@@ -32,6 +32,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'bag',
+    loadChildren: () =>
+      import('./pages/bag/bag.module').then((m) => m.BagModule),
+  },
+  {
     path: '**',
     loadChildren: () =>
       import('./pages/not-found/not-found.module').then(

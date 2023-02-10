@@ -1,0 +1,14 @@
+<div class="indentation-from-header"></div>
+<div class="bg">
+  <div class="container">
+    <header>
+      <h1>Review your bag.</h1>
+      <h2>Free delivery and free returns.</h2>
+    </header>
+    <main *ngIf="showItems">
+      <div class="item" *ngFor="let item of bagItems">
+        <div style="color: black">{{ item.product.name }}</div>
+      </div>
+    </main>
+  </div>
+</div>

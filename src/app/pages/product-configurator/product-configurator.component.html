@@ -1,6 +1,9 @@
 <div class="indentation-from-header"></div>
 <div class="bg">
-  <app-sticky-bar [product]="product" [barActive]="barActive"></app-sticky-bar>
+  <configurator-sticky-bar
+    [product]="product"
+    [barActive]="barActive"
+  ></configurator-sticky-bar>
   <div class="container">
     <div class="header">
       <div class="title">
@@ -25,13 +28,15 @@
         </div>
       </div>
       <div class="right-column">
-        <app-configuration-options
+        <configuration-options
           *ngFor="let option of product?.configurationOptions"
           [configurationOption]="option"
         >
-        </app-configuration-options>
+        </configuration-options>
       </div>
     </div>
-    <app-summary></app-summary>
+    <configurator-summary
+      (onItemAddedToBag)="onItemAddedToBag()"
+    ></configurator-summary>
   </div>
 </div>

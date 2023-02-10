@@ -4,7 +4,7 @@ import { Product } from 'src/app/shared/configurator-product.model';
 import { ProductConfiguratorService } from '../../service/product-configurator.service';
 
 @Component({
-  selector: 'app-sticky-bar',
+  selector: 'configurator-sticky-bar',
   templateUrl: './sticky-bar.component.html',
   styleUrls: ['./sticky-bar.component.scss'],
   animations: [

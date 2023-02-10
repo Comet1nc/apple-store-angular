@@ -3,7 +3,9 @@ import { Subject } from 'rxjs';
 import {
   ConfigurationOption,
   Option,
+  Product,
 } from 'src/app/shared/configurator-product.model';
+import { BagItem, BagService } from '../../bag/bag.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +14,8 @@ export class ProductConfiguratorService {
   defaultModelPriceUSD: number;
   configuratedOptions: ConfiguratedOption[] = [];
 
+  product: Product;
+
   initPrice = new Subject<number>();
   onPriceChanged = new Subject<number>();
   onAllOptionsSelected = new Subject<[boolean, ConfiguratedOption[]]>();
@@ -19,6 +23,8 @@ export class ProductConfiguratorService {
   setNewPriceForOption = new Subject<[number, string]>();
 
   price: number;
+
+  constructor(public bagService: BagService) {}
 
   clearService() {
     this.price = 0;
@@ -58,8 +64,6 @@ export class ProductConfiguratorService {
       this.configuratedOptions,
     ]);
 
-    console.log(this.configuratedOptions);
-
     this.recalculateTotalCost();
   }
 
@@ -67,7 +71,6 @@ export class ProductConfiguratorService {
     let result = this.configuratedOptions.every((element) => {
       return element.selectedOption !== undefined;
     });
-    console.log(result);
     return result;
   }
 
@@ -81,8 +84,17 @@ export class ProductConfiguratorService {
         this.price += +option.selectedOption?.priceUSD;
       }
     }
-    console.log(this.price);
     this.onPriceChanged.next(this.price);
+  }
+
+  setProduct(product: Product) {
+    this.product = product;
+  }
+
+  addItemToBag() {
+    this.bagService.addItemToBag(
+      new BagItem(this.configuratedOptions, this.product)
+    );
   }
 }
 

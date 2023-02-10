@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { headerPosition, HeaderService } from 'src/app/services/header.service';
@@ -55,14 +56,14 @@ export class ProductConfiguratorComponent
     private route: ActivatedRoute,
     private router: Router,
     private headerService: HeaderService,
-    private configuratorService: ProductConfiguratorService
+    private configuratorService: ProductConfiguratorService,
+    private notification: NzNotificationService
   ) {}
 
   ngOnInit(): void {
     this.headerService.onChangeHeaderPosition.next(headerPosition.absolute);
 
     this.configuratorService.configuratedOptions = [];
-    console.log(this.configuratorService.configuratedOptions);
 
     this.subsription = this.store
       .select('configurator')
@@ -79,6 +80,8 @@ export class ProductConfiguratorComponent
         if (product === undefined) return;
 
         this.product = product;
+
+        this.configuratorService.setProduct(product);
 
         this.imageSrc.next(product.imageUrl);
 
@@ -126,8 +129,12 @@ export class ProductConfiguratorComponent
     this.subsription.unsubscribe();
 
     this.headerService.onChangeHeaderPosition.next(headerPosition.fixed);
+  }
 
-    //
+  onItemAddedToBag() {
+    this.notification
+      .blank('', 'Item successfully added to bag!', { nzPlacement: 'bottom' })
+      .onClick.subscribe(() => {});
   }
 
   GetRouteDestination(name: string) {
