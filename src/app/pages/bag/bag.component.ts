@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfOptionType } from 'src/app/shared/configurator-product.model';
 import { BagItem, BagService } from './bag.service';
 
 @Component({
@@ -13,14 +14,16 @@ export class BagComponent implements OnInit {
   showItems = false;
 
   ngOnInit(): void {
-    // this.bagService.onItemsArrived.subscribe((bagItems: BagItem[]) => {
-    //   this.showItems = true;
-    //   this.bagItems = bagItems;
-    //   console.log(this.showItems);
-    // });
-
     this.bagItems = this.bagService.getItems();
 
     if (this.bagItems.length > 0) this.showItems = true;
+  }
+
+  getFullName(bagItem: BagItem) {
+    let fullName = '';
+    for (const option of bagItem.configuratedOptions) {
+      fullName += ' ' + option.selectedOption.title;
+    }
+    return fullName;
   }
 }

@@ -142,25 +142,27 @@
         </button>
       </li>
       <li class="cart-btn">
-        <button
-          *ngIf="navBarIsVisible"
-          class="btn-show-cart"
-          nz-button
-          nzType="primary"
-          nz-popover
-          [(nzPopoverVisible)]="bagViewIsVisible"
-          nzPopoverTrigger="click"
-          [nzPopoverContent]="contentTemplate"
-          [nzPopoverPlacement]="'bottom'"
-          [nzPopoverOverlayClassName]="'bagview-popover'"
-        >
-          <span
-            class="cart-icon"
-            nz-icon
-            nzType="shopping-cart"
-            nzTheme="outline"
-          ></span>
-        </button>
+        <nz-badge [nzCount]="bagItemsCount" [nzSize]="'small'">
+          <button
+            *ngIf="navBarIsVisible"
+            class="btn-show-cart"
+            nz-button
+            nzType="primary"
+            nz-popover
+            [(nzPopoverVisible)]="bagViewIsVisible"
+            nzPopoverTrigger="click"
+            [nzPopoverContent]="contentTemplate"
+            [nzPopoverPlacement]="'bottom'"
+            [nzPopoverOverlayClassName]="'bagview-popover'"
+          >
+            <span
+              class="cart-icon"
+              nz-icon
+              nzType="shopping-cart"
+              nzTheme="outline"
+            ></span>
+          </button>
+        </nz-badge>
       </li>
     </ul>
     <!-- see when search is opened / only for desktop-->
@@ -212,52 +214,10 @@
     <!-- see when bag is opened / responsive -->
     <aside class="bagview">
       <ng-template #contentTemplate>
-        <div class="bagview-content">
-          <button (click)="ChangeBagViewVisibility()" class="btn-close-bagview">
-            <span
-              nz-icon
-              nzType="plus"
-              nzTheme="outline"
-              [nzRotate]="45"
-            ></span>
-          </button>
-          <p>Your Bag is empty.</p>
-          <nav>
-            <ul>
-              <li routerLink="/bag" (click)="onLinkClick()">
-                <span
-                  class="cart-icon"
-                  nz-icon
-                  nzType="shopping-cart"
-                  nzTheme="outline"
-                ></span>
-                <a>Bag</a>
-              </li>
-              <li>
-                <span
-                  nz-icon
-                  nzType="book"
-                  nzTheme="outline"
-                  style="transform: scale(1.1)"
-                ></span>
-                <a>Saved Items</a>
-              </li>
-              <li>
-                <span
-                  nz-icon
-                  nzType="inbox"
-                  nzTheme="outline"
-                  style="transform: scale(1.3)"
-                ></span>
-                <a>Orders</a>
-              </li>
-              <li>
-                <span nz-icon nzType="user" nzTheme="outline"></span>
-                <a>Sign in</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <header-bag-view
+          (changeBagVisibility)="ChangeBagViewVisibility()"
+          (linkClick)="onLinkClick()"
+        ></header-bag-view>
       </ng-template>
     </aside>
   </nav>

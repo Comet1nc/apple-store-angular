@@ -5,9 +5,14 @@
       <h1>Review your bag.</h1>
       <h2>Free delivery and free returns.</h2>
     </header>
-    <main *ngIf="showItems">
+    <main class="items-list" *ngIf="showItems">
       <div class="item" *ngFor="let item of bagItems">
-        <div style="color: black">{{ item.product.name }}</div>
+        <div class="img-container">
+          <img [src]="item.product.imageUrl" class="item-img" />
+        </div>
+        <div class="full-name">{{ getFullName(item) }}</div>
+        <div class="amount-of-items">1</div>
+        <div class="price"></div>
       </div>
     </main>
   </div>

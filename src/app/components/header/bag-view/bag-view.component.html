@@ -1,0 +1,54 @@
+<div class="bagview-content">
+  <button (click)="ChangeBagViewVisibility()" class="btn-close-bagview">
+    <span nz-icon nzType="plus" nzTheme="outline" [nzRotate]="45"></span>
+  </button>
+  <p class="empty-message" *ngIf="items.length === 0">Your Bag is empty.</p>
+  <ul class="products-list" *ngIf="items.length !== 0">
+    <li
+      class="item"
+      *ngFor="let item of items"
+      routerLink="/bag"
+      (click)="onLinkClick()"
+    >
+      <div class="img-container">
+        <img class="item-img" [src]="item.product.imageUrl" />
+      </div>
+      <div class="name">{{ item.product.name }}</div>
+    </li>
+  </ul>
+  <nav>
+    <ul>
+      <li routerLink="/bag" (click)="onLinkClick()">
+        <span
+          class="cart-icon"
+          nz-icon
+          nzType="shopping-cart"
+          nzTheme="outline"
+        ></span>
+        <a>Bag</a>
+      </li>
+      <li>
+        <span
+          nz-icon
+          nzType="book"
+          nzTheme="outline"
+          style="transform: scale(1.1)"
+        ></span>
+        <a>Saved Items</a>
+      </li>
+      <li>
+        <span
+          nz-icon
+          nzType="inbox"
+          nzTheme="outline"
+          style="transform: scale(1.3)"
+        ></span>
+        <a>Orders</a>
+      </li>
+      <li>
+        <span nz-icon nzType="user" nzTheme="outline"></span>
+        <a>Sign in</a>
+      </li>
+    </ul>
+  </nav>
+</div>

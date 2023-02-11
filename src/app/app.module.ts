@@ -22,6 +22,8 @@ import { StoreModule } from '@ngrx/store';
 import { ConfiguratorEffects } from './pages/product-configurator/store/configurator.effects';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BagViewComponent } from './components/header/bag-view/bag-view.component';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 registerLocaleData(pl);
 
@@ -32,6 +34,7 @@ registerLocaleData(pl);
     HeaderComponent,
     FooterComponent,
     ColumnComponent,
+    BagViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ registerLocaleData(pl);
     BrowserAnimationsModule,
     NzIconModule,
     NzPopoverModule,
+    NzBadgeModule,
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([ConfiguratorEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),

@@ -12,13 +12,15 @@ import {
 import {
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { headerPosition, HeaderService } from 'src/app/services/header.service';
+import { BagItem, BagService } from 'src/app/pages/bag/bag.service';
 
 @Component({
   selector: 'app-header',
@@ -388,7 +390,7 @@ import { headerPosition, HeaderService } from 'src/app/services/header.service';
     ]),
   ],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   sidenavIsOpen: boolean = false;
   mobileSideNavAnimationState: MobileSideNavAnimationStates =
     MobileSideNavAnimationStates.closed;
@@ -418,12 +420,16 @@ export class HeaderComponent implements OnInit {
 
   bagBtn = true;
 
+  bagItemsCount: number;
+
   @Output('onPageChanged') onPageChanged = new Subject<void>();
   @Output('onChangeBodyScroll') onChangeBodyScroll = new Subject<boolean>();
+  itemsArrivedSubscription: Subscription;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private headerService: HeaderService
+    private headerService: HeaderService,
+    private bagService: BagService
   ) {}
 
   ngOnInit(): void {
@@ -465,6 +471,17 @@ export class HeaderComponent implements OnInit {
           this.ToggleMobileBag(false);
         }
       });
+    //
+
+    this.itemsArrivedSubscription = this.bagService.onItemsArrived.subscribe(
+      (items: BagItem[]) => {
+        this.bagItemsCount = items.length;
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.itemsArrivedSubscription.unsubscribe();
   }
 
   onLinkClick() {
