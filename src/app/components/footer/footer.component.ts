@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Column } from './column/column.component';
 
 @Component({
@@ -22,4 +23,10 @@ export class FooterComponent {
       'Newsroom',
     ]),
   ];
+
+  @Output('onPageChanged') onPageChanged = new Subject<void>();
+
+  onLinkClick() {
+    this.onPageChanged.next();
+  }
 }

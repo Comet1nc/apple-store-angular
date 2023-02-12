@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import {
   trigger,
@@ -8,6 +8,7 @@ import {
   group,
   state,
 } from '@angular/animations';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-column',
@@ -75,6 +76,7 @@ import {
 })
 export class ColumnComponent implements OnInit {
   @Input() myColumnData!: Column;
+  @Output('onPageChanged') onLinkClick = new Subject<void>();
 
   iconAnimationState: string = 'close';
   linksAnimationState: string = 'opened';
@@ -97,6 +99,13 @@ export class ColumnComponent implements OnInit {
           this.isVisibleLinks = true;
         }
       });
+  }
+
+  linkClick() {
+    setTimeout(() => {
+      window.scroll(0, 0);
+    }, 10);
+    this.onLinkClick.next();
   }
 
   ChangeLinksVisibility() {

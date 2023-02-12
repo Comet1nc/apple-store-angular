@@ -290,9 +290,14 @@ button {
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 0 20px;
+    color: rgb(179, 179, 179);
 
     .li-show-cart {
       min-width: 26px;
+
+      nz-badge {
+        color: rgb(179, 179, 179);
+      }
     }
 
     .btn-open-sidenav {

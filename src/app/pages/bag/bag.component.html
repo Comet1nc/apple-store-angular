@@ -2,18 +2,46 @@
 <div class="bg">
   <div class="container">
     <header>
-      <h1>Review your bag.</h1>
-      <h2>Free delivery and free returns.</h2>
+      <div *ngIf="showItems" class="with-items">
+        <h1>Review your bag.</h1>
+        <h2>Free delivery and free returns.</h2>
+      </div>
+      <div class="no-items" *ngIf="!showItems">
+        <h1 class="title">Your bag is empty</h1>
+        <a class="link-continue" routerLink="/">Continue Shopping</a>
+      </div>
     </header>
     <main class="items-list" *ngIf="showItems">
-      <div class="item" *ngFor="let item of bagItems">
+      <div class="item" *ngFor="let item of bagItems; let i = index">
         <div class="img-container">
           <img [src]="item.product.imageUrl" class="item-img" />
         </div>
         <div class="full-name">{{ getFullName(item) }}</div>
-        <div class="amount-of-items">1</div>
-        <div class="price"></div>
+        <!-- <div class="amount-of-items">
+          <select>
+            <option *ngFor="let value of amount" [value]="value">
+              {{ value }}
+            </option>
+          </select>
+        </div> -->
+        <div class="remove-btn" (click)="removeItem(i)">Remove</div>
+        <div class="price">$ {{ item.price }}</div>
       </div>
     </main>
+    <div class="summary" *ngIf="showItems">
+      <div class="sub-total-price">
+        <div class="sub-total-title">Subtotal</div>
+        <div class="price">$ {{ totalPrice }}</div>
+      </div>
+      <div class="shipping-price">
+        <div class="shipping-price-title">Shipping</div>
+        <div class="price">FREE</div>
+      </div>
+      <div class="total-price">
+        <div class="total-price-title">Total</div>
+        <div class="price">$ {{ totalPrice }}</div>
+      </div>
+      <div class="link-check-out">Check Out</div>
+    </div>
   </div>
 </div>

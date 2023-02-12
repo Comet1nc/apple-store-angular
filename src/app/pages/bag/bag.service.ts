@@ -15,7 +15,17 @@ export class BagService {
   addItemToBag(bagItem: BagItem) {
     this.bagItems.push(bagItem);
     this.onItemsArrived.next(this.bagItems);
-    console.log(this.bagItems);
+  }
+
+  removeItem(index) {
+    console.log(index);
+    if (index === 0) {
+      this.bagItems.shift();
+      this.onItemsArrived.next(this.bagItems);
+      return;
+    }
+    this.bagItems.splice(index, index);
+    this.onItemsArrived.next(this.bagItems);
   }
 
   getItems() {
@@ -26,9 +36,15 @@ export class BagService {
 export class BagItem {
   public configuratedOptions: ConfiguratedOption[] = [];
   public product: Product;
+  public price: number;
 
-  constructor(configuratedOptions: ConfiguratedOption[], product: Product) {
+  constructor(
+    configuratedOptions: ConfiguratedOption[],
+    product: Product,
+    price: number
+  ) {
     this.configuratedOptions = configuratedOptions;
     this.product = product;
+    this.price = price;
   }
 }

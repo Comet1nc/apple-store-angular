@@ -2,6 +2,7 @@
   <div class="nav-wrapper">
     <div class="columns-wrapper" #columnsWrapper>
       <app-column
+        (onLinkClick)="onLinkClick()"
         *ngFor="let column of columnsData"
         [myColumnData]="column"
       ></app-column>

@@ -93,7 +93,7 @@ export class ProductConfiguratorService {
 
   addItemToBag() {
     this.bagService.addItemToBag(
-      new BagItem(this.configuratedOptions, this.product)
+      new BagItem(this.configuratedOptions, this.product, this.price)
     );
   }
 }

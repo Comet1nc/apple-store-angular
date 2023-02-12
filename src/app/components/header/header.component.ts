@@ -638,6 +638,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.navBarDesktopAnimationState = state;
     }, 10);
   }
+
+  onMobileQuickLinkClick() {
+    this.CloseEditMode();
+    setTimeout(() => {
+      this.onLinkClick();
+    }, 400);
+  }
 }
 
 enum NavBarAnimationStates {

@@ -26,27 +26,28 @@
         ></span>
       </li>
       <li class="icon li-show-cart">
-        <!-- *ngIf="!navBarIsVisible && !sidenavIsOpen"  -->
-        <button
-          *ngIf="bagBtn"
-          [@mobileBag]
-          class="btn-show-cart"
-          nz-button
-          nzType="primary"
-          nz-popover
-          [(nzPopoverVisible)]="bagViewIsVisible"
-          nzPopoverTrigger="click"
-          [nzPopoverContent]="contentTemplate"
-          [nzPopoverPlacement]="'bottom'"
-          [nzPopoverOverlayClassName]="'bagview-popover'"
-        >
-          <span
-            class="cart"
-            nz-icon
-            nzType="shopping-cart"
-            nzTheme="outline"
-          ></span>
-        </button>
+        <nz-badge [nzCount]="bagItemsCount" [nzSize]="'small'">
+          <button
+            *ngIf="bagBtn"
+            [@mobileBag]
+            class="btn-show-cart"
+            nz-button
+            nzType="primary"
+            nz-popover
+            [(nzPopoverVisible)]="bagViewIsVisible"
+            nzPopoverTrigger="click"
+            [nzPopoverContent]="contentTemplate"
+            [nzPopoverPlacement]="'bottom'"
+            [nzPopoverOverlayClassName]="'bagview-popover'"
+          >
+            <span
+              class="cart"
+              nz-icon
+              nzType="shopping-cart"
+              nzTheme="outline"
+            ></span>
+          </button>
+        </nz-badge>
       </li>
     </ul>
     <!-- ui for mobile view / only for mobile -->
@@ -95,10 +96,20 @@
       <section class="section">
         <h3>QUICK LINKS</h3>
         <ul>
-          <li><a href="">Iphone 14</a></li>
-          <li><a href="">iPad</a></li>
-          <li><a href="">Mac</a></li>
-          <li><a href="">Watch</a></li>
+          <li>
+            <a routerLink="/iphone" (click)="onMobileQuickLinkClick()"
+              >Iphone 14</a
+            >
+          </li>
+          <li>
+            <a routerLink="/ipad" (click)="onMobileQuickLinkClick()">iPad</a>
+          </li>
+          <li>
+            <a routerLink="/mac" (click)="onMobileQuickLinkClick()">Mac</a>
+          </li>
+          <li>
+            <a routerLink="/watch" (click)="onMobileQuickLinkClick()">Watch</a>
+          </li>
         </ul>
       </section>
     </aside>
@@ -202,10 +213,38 @@
           <section class="section">
             <h3>QUICK LINKS</h3>
             <ul>
-              <li><a href="">Iphone 14</a></li>
-              <li><a href="">iPad</a></li>
-              <li><a href="">Mac</a></li>
-              <li><a href="">Watch</a></li>
+              <li>
+                <a
+                  routerLink="/iphone"
+                  (click)="onLinkClick()"
+                  (click)="CloseSearchView()"
+                  >Iphone</a
+                >
+              </li>
+              <li>
+                <a
+                  routerLink="/ipad"
+                  (click)="onLinkClick()"
+                  (click)="CloseSearchView()"
+                  >iPad</a
+                >
+              </li>
+              <li>
+                <a
+                  routerLink="/mac"
+                  (click)="onLinkClick()"
+                  (click)="CloseSearchView()"
+                  >Mac</a
+                >
+              </li>
+              <li>
+                <a
+                  routerLink="/watch"
+                  (click)="onLinkClick()"
+                  (click)="CloseSearchView()"
+                  >Apple Watch</a
+                >
+              </li>
             </ul>
           </section>
         </aside>

@@ -16,7 +16,12 @@
     *ngIf="isVisibleLinks"
     class="links-wrapper"
   >
-    <a *ngFor="let name of myColumnData.linksName">{{ name }}</a>
+    <a
+      *ngFor="let name of myColumnData.linksName"
+      [routerLink]="'/' + name.toLowerCase()"
+      (click)="linkClick()"
+      >{{ name }}</a
+    >
   </div>
   <hr />
 </div>
