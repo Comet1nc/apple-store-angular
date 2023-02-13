@@ -174,3 +174,32 @@
   }
 
 }
+
+@media (max-width: 833px) {
+  .container {
+    header {}
+
+    .items-list {
+      padding: 0;
+
+      .item {
+        .remove-btn {
+          margin: 0 auto;
+        }
+      }
+    }
+
+    .no-items {}
+
+    .summary {
+      margin-right: auto;
+      padding-right: 0px;
+
+      .link-check-out {
+        max-width: 311px;
+        min-width: 0px;
+        width: 100%;
+      }
+    }
+  }
+}
